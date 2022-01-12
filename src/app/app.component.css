@@ -1,0 +1,10 @@
+.outer-container{
+  background-color: lightgray;
+  height: 100%;
+
+}
+
+.inner-container{
+    display: flex;
+    justify-content: center;
+}
