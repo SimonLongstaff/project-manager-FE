@@ -5,18 +5,20 @@ import { AppComponent } from './app.component';
 import { ProjectComponent } from './components/project/project.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
+import {CdkAccordionModule} from "@angular/cdk/accordion";
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectComponent
   ],
-    imports: [
-      HttpClientModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatCardModule
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    CdkAccordionModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
