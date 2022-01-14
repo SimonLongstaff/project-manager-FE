@@ -8,13 +8,21 @@ import {MatCardModule} from "@angular/material/card";
 import {CdkAccordionModule} from "@angular/cdk/accordion";
 import { APILayerComponent } from './components/api-layer/api-layer.component';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { ProjectListComponent } from './components/project-list/project-list.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { SubtaskContainerComponent } from './components/subtask-container/subtask-container.component';
+import { SubtaskRowComponent } from './components/subtask-row/subtask-row.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectComponent,
     APILayerComponent,
-    TasksComponent
+    TasksComponent,
+    ProjectListComponent,
+    TaskListComponent,
+    SubtaskContainerComponent,
+    SubtaskRowComponent
   ],
   imports: [
     HttpClientModule,

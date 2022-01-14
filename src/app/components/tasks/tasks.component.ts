@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Project} from "../../interfaces/Project";
 import {Task} from "../../interfaces/task";
+import { subtask } from '../../interfaces/subtask';
 
 @Component({
   selector: 'app-tasks',
@@ -10,22 +11,13 @@ import {Task} from "../../interfaces/task";
 export class TasksComponent implements OnInit {
 
   @Input() project: Project | undefined;
-  @Input() tasks: Task[] = [];
+  @Input() task: Task | undefined;
+  @Input() subtasks: subtask[] = [];
   hidden: string = 'hidden';
 
   constructor() { }
 
-  filterTask(): Task[]{
-
-    let filterTasks:Task[] = []
-
-    for(let task of this.tasks){
-      if(task.project_id === this.project?.id){
-        filterTasks.push(task)
-      }
-    }
-    return filterTasks;
-  }
+  
 
   toggle(): void
   {

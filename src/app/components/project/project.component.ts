@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 import { Project } from 'src/app/interfaces/Project';
 import {Task} from "../../interfaces/task";
+import { subtask } from '../../interfaces/subtask';
 
 @Component({
   selector: 'app-project',
@@ -10,8 +11,9 @@ import {Task} from "../../interfaces/task";
 })
 export class ProjectComponent implements OnInit {
 
-  @Input() projects: Project[] = [];
+  @Input() project: Project | undefined;
   @Input() tasks: Task[] = [];
+  @Input() subtasks: subtask[] = [];
 
   constructor() { }
 

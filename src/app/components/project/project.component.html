@@ -1,8 +1,8 @@
-<div *ngFor="let project of projects">
+<div>
     <mat-card class="project-card">
-      <mat-card-title>{{project.project_name}}</mat-card-title>
-      <mat-card-content> {{project.project_desc}}</mat-card-content>
-      <app-tasks [project]="project" [tasks]="tasks"></app-tasks>
+      <mat-card-title>{{project?.project_name}}</mat-card-title>
+      <mat-card-content> {{project?.project_desc}}</mat-card-content>
+      <app-task-list [project]="project" [tasks]="tasks" [subtasks]="subtasks"></app-task-list>
     </mat-card>
 
 
