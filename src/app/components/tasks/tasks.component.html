@@ -1,0 +1,8 @@
+<div>
+  <mat-card (click)="toggle()">
+    <mat-card-title>{{ task.task_name }}</mat-card-title>
+    <mat-card-content [classList]="hidden">{{
+      task.task_desc
+    }}</mat-card-content>
+  </mat-card>
+</div>

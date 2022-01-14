@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { Project } from 'src/app/Project';
-import {ProjectService} from "../../services/project.service";
+import { Project } from 'src/app/interfaces/Project';
+import {Task} from "../../interfaces/task";
 
 @Component({
   selector: 'app-project',
@@ -10,12 +10,12 @@ import {ProjectService} from "../../services/project.service";
 })
 export class ProjectComponent implements OnInit {
 
-  projects: Project[] = [];
+  @Input() projects: Project[] = [];
+  @Input() tasks: Task[] = [];
 
-  constructor(private projectService: ProjectService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.projectService.getProjects().subscribe((projects) => (this.projects = projects));
   }
 
 }

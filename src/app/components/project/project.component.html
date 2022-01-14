@@ -2,6 +2,7 @@
     <mat-card class="project-card">
       <mat-card-title>{{project.project_name}}</mat-card-title>
       <mat-card-content> {{project.project_desc}}</mat-card-content>
+      <app-tasks [project]="project" [tasks]="tasks"></app-tasks>
     </mat-card>
 
 
