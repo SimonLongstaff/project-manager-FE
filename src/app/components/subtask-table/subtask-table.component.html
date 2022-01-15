@@ -1,20 +1,23 @@
 <table>
   <thead>
-  <tr>
-    <th>Sub Task</th>
-    <th>Sub Task Description</th>
-    <th>Percentage Complete</th>
-    <th class="delete-td">Delete</th>
-  </tr>
+    <tr>
+      <th>Sub Task</th>
+      <th>Sub Task Description</th>
+      <th>Percentage Complete</th>
+      <th class="delete-td"></th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let subtask of subtasks">
-    <td>{{subtask.subtask_name}}</td>
-    <td>{{subtask.subtask_desc}}</td>
-    <td>{{subtask.percentage_complete}}</td>
-    <td class="delete-td"><button type="button" class="delete-Button" (click)="delete(subtask)">X</button></td>
-  </tr>
-</tbody>
+    <tr *ngFor="let subtask of subtasks">
+      <td>{{ subtask.subtask_name }}</td>
+      <td>{{ subtask.subtask_desc }}</td>
+      <td>{{ subtask.percentage_complete }}</td>
+      <td class="delete-td">
+        <button type="button" class="delete-Button" (click)="delete(subtask)">
+          X
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
-<hr>
-
+<hr />

@@ -1,8 +1,16 @@
 <div>
-    <mat-card class="project-card">
-      <mat-card-title>{{project?.project_name}}</mat-card-title>
-      <mat-card-content> {{project?.project_desc}}</mat-card-content>
-      <app-task-list [project]="project" [tasks]="tasks" [subtasks]="subtasks"></app-task-list>
+  <mat-card class="project-card">
+    <mat-card-title>{{ project?.project_name }}</mat-card-title>
+    <mat-card-content> {{ project?.project_desc }}</mat-card-content>
+    <app-task-list
+      [project]="project"
+      [tasks]="tasks"
+      [subtasks]="subtasks"
+    ></app-task-list>
+    <div id="add-task-button" class="addTask addNewTaskButton">
+      <button (click)="RevealForm()" #addButton>New Task</button>
+    </div>
+    <div id="add-task-form" class="hidden" #addForm>
       <div class="task-Entry">
         <span class="name">
           <label class="full-width">Name</label>
@@ -14,11 +22,13 @@
         </span>
       </div>
       <div class="addTask">
-        <button type="button" class="button full-width" (click)="addNewTask()" >
+        <button type="button" class="button full-width" (click)="addNewTask()">
           Add
         </button>
+        <button type="button" class="button full-width" (click)="HideForm()">
+          Cancel
+        </button>
       </div>
-    </mat-card>
-
-
+    </div>
+  </mat-card>
 </div>
