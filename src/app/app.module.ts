@@ -11,7 +11,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { SubtaskContainerComponent } from './components/subtask-container/subtask-container.component';
-import { SubtaskRowComponent } from './components/subtask-row/subtask-row.component';
+import { SubtaskTableComponent } from './components/subtask-table/subtask-table.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { SubtaskRowComponent } from './components/subtask-row/subtask-row.compon
     ProjectListComponent,
     TaskListComponent,
     SubtaskContainerComponent,
-    SubtaskRowComponent
+    SubtaskTableComponent
   ],
   imports: [
     HttpClientModule,

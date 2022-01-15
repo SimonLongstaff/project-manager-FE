@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Project} from "../../interfaces/Project";
 import {Task} from "../../interfaces/task";
 import { subtask } from '../../interfaces/subtask';
+import { SubtaskService } from './../../services/subtask.service';
 
 @Component({
   selector: 'app-tasks',
@@ -11,12 +12,17 @@ import { subtask } from '../../interfaces/subtask';
 export class TasksComponent implements OnInit {
 
   @Input() project: Project | undefined;
-  @Input() task: Task | undefined;
+  @Input()
+  task!: Task;
   @Input() subtasks: subtask[] = [];
+
+  @ViewChild('name') name: ElementRef | undefined
+  @ViewChild('desc') desc: ElementRef | undefined;
+
 
   hidden: string = 'hidden';
 
-  constructor() { }
+  constructor(private SubtaskService: SubtaskService) { }
 
 
 
@@ -31,8 +37,48 @@ export class TasksComponent implements OnInit {
 
   }
 
+  filterSubTasks(): subtask[]{
+    let retVal: subtask[] = [];
+
+    this.subtasks.forEach(subtask => {
+      if(subtask.task_id === this.task?.id){
+        retVal.push(subtask);
+      }
+    });
+
+
+    return retVal;
+  }
+
 
   ngOnInit(): void {
+
+  }
+
+  addSubTask(): void{
+    if(this.name?.nativeElement.value != ''
+    && this.desc?.nativeElement.value != ''
+    && this.task.id)
+    {
+      this.SubtaskService.createNewSubTask(
+        this.task?.id,
+        this.name?.nativeElement.value,
+        this.desc?.nativeElement.value
+      ).subscribe((subtask) => {
+        this.subtasks.push(subtask)
+      })
+    }
+  }
+
+  delete = (subtask:subtask): void => {
+    if(subtask.id){
+      this.SubtaskService.deleteSubTask(subtask.id)
+      this.subtasks.forEach((feSubtask, index) => {
+        if(feSubtask.id == subtask.id){
+          this.subtasks.splice(index, 1)
+        }
+      });
+    }
 
   }
 

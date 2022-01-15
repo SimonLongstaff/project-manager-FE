@@ -3,3 +3,42 @@
   min-width: 400px;
 
 }
+
+.addTask{
+  height: 30px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.task-Entry{
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  align-items: flex-end;
+
+}
+
+.name{
+  flex: .2;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.desc{
+  flex: 1;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.full-width{
+  width: 100%;
+  margin: 5px;
+}
+
+label{
+  font-size: 15px;
+  font-weight: bold;
+}

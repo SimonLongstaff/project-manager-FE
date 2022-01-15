@@ -16,4 +16,15 @@ export class TaskService{
     return this.http.get<Task[]>(this.apiUrl)
   }
 
+  createNewTask(projectId: number, taskName:string, taskDesc:string): Observable<Task>{
+    let newTask = {
+      "project_id": projectId,
+      "task_name": taskName,
+      "task_desc": taskDesc,
+      "is_complete": 0,
+      "percentage_complete": 0
+    }
+
+    return this.http.post<Task>(this.apiUrl, newTask)
+  }
 }

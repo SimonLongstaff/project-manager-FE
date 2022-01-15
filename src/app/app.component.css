@@ -1,7 +1,7 @@
 .outer-container{
   background-color: lightgray;
-  height: 100%;
   display: flex;
+  height: fit-content;
   justify-content: center;
   align-content: center;
 
@@ -10,4 +10,9 @@
 .inner-container{
   max-width: 95%;
 
+}
+
+.root{
+  height: 100%;
+  background-color: lightgray;
 }

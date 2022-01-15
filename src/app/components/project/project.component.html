@@ -3,6 +3,21 @@
       <mat-card-title>{{project?.project_name}}</mat-card-title>
       <mat-card-content> {{project?.project_desc}}</mat-card-content>
       <app-task-list [project]="project" [tasks]="tasks" [subtasks]="subtasks"></app-task-list>
+      <div class="task-Entry">
+        <span class="name">
+          <label class="full-width">Name</label>
+          <input class="full-width" type="text" id="name" #taskName />
+        </span>
+        <span class="desc">
+          <label class="full-width">Description</label>
+          <input class="full-width" type="text" id="desc" #taskDesc />
+        </span>
+      </div>
+      <div class="addTask">
+        <button type="button" class="button full-width" (click)="addNewTask()" >
+          Add
+        </button>
+      </div>
     </mat-card>
 
 

@@ -16,4 +16,29 @@ export class SubtaskService {
     console.log( this.http.get<subtask[]>(this.apiUrl))
     return this.http.get<subtask[]>(this.apiUrl)
   }
+
+  createNewSubTask(taskId:number, name:string, desc:string): Observable<subtask>{
+
+   let newSubtask = {
+      "task_id": taskId,
+      "subtask_name": name,
+      "subtask_desc": desc,
+      "is_complete": 0,
+      "percentage_complete": 0
+    }
+
+    return this.http.post<subtask>(this.apiUrl, newSubtask )
+  }
+
+  deleteSubTask(taskId:number):void{
+    this.http.delete(this.apiUrl + '/' + taskId).subscribe({
+      next: data => {
+        return true;
+      },
+      error: error => {
+        console.log(error)
+        return false;
+      }
+    })
+  }
 }

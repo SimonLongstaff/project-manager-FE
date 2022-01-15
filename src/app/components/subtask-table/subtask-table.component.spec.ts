@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubtaskRowComponent } from './subtask-row.component';
+import { SubtaskTableComponent } from './subtask-table.component';
 
-describe('SubtaskRowComponent', () => {
-  let component: SubtaskRowComponent;
-  let fixture: ComponentFixture<SubtaskRowComponent>;
+describe('SubtaskTableComponent', () => {
+  let component: SubtaskTableComponent;
+  let fixture: ComponentFixture<SubtaskTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubtaskRowComponent ]
+      declarations: [ SubtaskTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubtaskRowComponent);
+    fixture = TestBed.createComponent(SubtaskTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,16 +1,27 @@
- <mat-card (click)="toggle()">
-    <mat-card-title>{{ task?.task_name }}</mat-card-title>
-    <div [classList]="hidden">
-      <mat-card-content >{{task?.task_desc}}</mat-card-content>
-      <br>
-      <table>
-        <tr>
-          <th>Sub Task</th>
-        </tr>
-        <tr *ngFor="let subtask of subtasks">
-          <app-subtask-row [subtask]="subtask"></app-subtask-row>
-        </tr>
-      </table>
+<mat-card>
+  <mat-card-title (click)="toggle()">{{ task?.task_name }}</mat-card-title>
+  <div [classList]="hidden">
+    <mat-card-content>{{ task?.task_desc }}</mat-card-content>
+    <br />
+    <app-subtask-table
+      [subtasks]="filterSubTasks()"
+      [task]="task"
+      [delete]="delete"
+    ></app-subtask-table>
+    <div class="task-Entry">
+      <span class="name">
+        <label class="full-width">Name</label>
+        <input class="full-width" type="text" id="name" #name />
+      </span>
+      <span class="desc">
+        <label class="full-width">Description</label>
+        <input class="full-width" type="text" id="desc" #desc />
+      </span>
+      <span class="button-container">
+        <button type="button" class="button full-width" (click)="addSubTask()">
+          Add
+        </button>
+      </span>
     </div>
+  </div>
 </mat-card>
-
