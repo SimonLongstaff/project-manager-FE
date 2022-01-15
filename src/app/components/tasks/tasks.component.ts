@@ -13,11 +13,12 @@ export class TasksComponent implements OnInit {
   @Input() project: Project | undefined;
   @Input() task: Task | undefined;
   @Input() subtasks: subtask[] = [];
+
   hidden: string = 'hidden';
 
   constructor() { }
 
-  
+
 
   toggle(): void
   {

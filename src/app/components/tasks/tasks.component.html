@@ -1,13 +1,13 @@
  <mat-card (click)="toggle()">
     <mat-card-title>{{ task?.task_name }}</mat-card-title>
-    <div classList]="hidden">
-      <mat-card-content [>{{task?.task_desc}}</mat-card-content>
+    <div [classList]="hidden">
+      <mat-card-content >{{task?.task_desc}}</mat-card-content>
       <br>
       <table>
         <tr>
-          <th>"Sub Task"</th>
+          <th>Sub Task</th>
         </tr>
-        <tr *ngClass="let subtask of subtasks">
+        <tr *ngFor="let subtask of subtasks">
           <app-subtask-row [subtask]="subtask"></app-subtask-row>
         </tr>
       </table>

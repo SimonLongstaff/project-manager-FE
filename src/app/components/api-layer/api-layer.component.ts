@@ -19,14 +19,14 @@ export class APILayerComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-     private TaskService: TaskService,
-     private SubtaskService: SubtaskService
+    private TaskService: TaskService,
+    private SubtaskService: SubtaskService
      ) { }
 
   ngOnInit(): void {
     this.projectService.getProjects().subscribe((projects) => (this.projects = projects));
     this.TaskService.getAllTasks().subscribe((tasks) => (this.tasks = tasks));
-    this.SubtaskService.getAllSubTaks().subscribe((subtasks) => (this.subtasks = subtasks))
+    this.SubtaskService.getAllSubTasks().subscribe((subtasks) => (this.subtasks = subtasks))
   }
 
 }
