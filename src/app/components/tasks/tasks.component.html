@@ -4,11 +4,9 @@
       <span class="flex-left">{{ task?.task_name }}</span>
       <span class="flex-right">{{ task?.percentage_complete }}%</span>
     </div>
-    <mat-progress-bar
-      mode="determinate"
-      [value]="task.percentage_complete"
-      color="{{ getProgressBarColour() }}"
-    ></mat-progress-bar>
+    <app-progress-bar
+    [percentage]="task.percentage_complete"
+  ></app-progress-bar>
   </mat-card-title>
   <div [classList]="hidden">
     <mat-card-content>{{ task?.task_desc }}</mat-card-content>

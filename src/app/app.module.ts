@@ -13,6 +13,8 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { SubtaskContainerComponent } from './components/subtask-container/subtask-container.component';
 import { SubtaskTableComponent } from './components/subtask-table/subtask-table.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ProgressBarComponent } from './components/Ui_Components/progress-bar/progress-bar.component';
+import { HeaderComponent } from './components/root/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     TaskListComponent,
     SubtaskContainerComponent,
     SubtaskTableComponent,
+    ProgressBarComponent,
+    HeaderComponent,
   ],
   imports: [
     HttpClientModule,

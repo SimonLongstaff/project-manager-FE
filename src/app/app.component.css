@@ -1,18 +1,17 @@
-.outer-container{
+.outer-container {
   background-color: lightgray;
   display: flex;
   height: fit-content;
   justify-content: center;
   align-content: center;
-
+  margin-top: 70px;
 }
 
-.inner-container{
+.inner-container {
   max-width: 95%;
-
 }
 
-.root{
+.root {
   height: 100%;
   background-color: lightgray;
 }
