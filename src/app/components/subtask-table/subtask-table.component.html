@@ -3,6 +3,7 @@
     <tr>
       <th>Sub Task</th>
       <th>Sub Task Description</th>
+      <th>Complexity</th>
       <th>Percentage Complete</th>
       <th class="delete-td"></th>
     </tr>
@@ -11,13 +12,19 @@
     <tr *ngFor="let subtask of subtasks">
       <td>{{ subtask.subtask_name }}</td>
       <td>{{ subtask.subtask_desc }}</td>
+      <td>{{getComplexityString(subtask.complexity)}}</td>
       <td>{{ subtask.percentage_complete }}</td>
       <td class="delete-td">
+        <button type="button" class="work-Button" (click)="revealWorkModal()" >
+          <span class="flex-centered"><mat-icon>work</mat-icon></span>
+        </button>
         <button type="button" class="delete-Button" (click)="delete(subtask)">
-          X
+          <span class="flex-centered"><mat-icon>delete</mat-icon></span>
         </button>
       </td>
+      <app-work-done-modal *ngIf="WorkModalVisible" [subtask]="subtask" (close)="revealWorkModal()" (taskUpdate)="updateTask($event)"></app-work-done-modal>
     </tr>
   </tbody>
 </table>
-<hr/>
+
+<hr />

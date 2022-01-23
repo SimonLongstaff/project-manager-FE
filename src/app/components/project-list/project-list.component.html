@@ -1,3 +1,23 @@
+<div>
+  <mat-card>
+    <div class="button-row">
+      <button (click)="ShowAddNewModal(true)">
+        <span class="flex-centered"
+          ><mat-icon>library_add</mat-icon> New Project
+        </span>
+      </button>
+    </div>
+  </mat-card>
+</div>
+<app-new-project-modal
+  [Projects]="projects"
+  *ngIf="AddNewProject"
+  (close)="ShowAddNewModal(false)"
+></app-new-project-modal>
 <div *ngFor="let project of projects">
-    <app-project [project]="project" [tasks]="tasks" [subtasks]="subtask"></app-project>
+  <app-project
+    [project]="project"
+    [tasks]="tasks"
+    [subtasks]="subtask"
+  ></app-project>
 </div>

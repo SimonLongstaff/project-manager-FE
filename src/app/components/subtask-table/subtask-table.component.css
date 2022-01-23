@@ -4,17 +4,19 @@ table {
   text-align: center;
   border-collapse: collapse;
 }
-table td, table th {
+table td,
+table th {
   padding: 4px 4px;
 }
 table tbody td {
   font-size: 13px;
 }
 table tr:nth-child(even) {
-  background: #DCDCDC;
+  background: #dcdcdc;
 }
 
-th, td{
+th,
+td {
   width: 10%;
   max-width: 150px;
 }
@@ -24,68 +26,96 @@ table thead {
 table thead th {
   font-size: 15px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
 }
 table tfoot td {
   font-size: 14px;
 }
 
-.task-Entry{
+button {
+  border-radius: 5px;
+  margin: 5px;
+}
+
+mat-icon {
+  margin: 2px;
+}
+
+button:active {
+  transform: translateY(4px);
+}
+
+.task-Entry {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
 }
 
-.name{
-  flex: .2;
+.name {
+  flex: 0.2;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-.desc{
+.desc {
   flex: 1;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-.button-container{
+.button-container {
   margin-left: 15px;
   margin-right: 15px;
 }
 
-.button{
-  height:  max-content;
+.button {
+  height: max-content;
   width: max-content;
 }
 
-.full-width{
+.full-width {
   width: 100%;
   margin: 5px;
 }
 
-label{
+label {
   font-size: 15px;
   font-weight: bold;
 }
 
-.delete-Button{
-  color: red;
-  background-color: transparent;
-  border: none;
-  font-size: 15px;
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.delete-Button:hover{
+.delete-Button {
+  color: red;
+  background-color: transparent;
+  border-color: red;
+  font-size: initial;
+}
+
+.delete-Button:hover {
   color: white;
   background-color: red;
 }
 
-.delete-Button:active{
-  transform: translateY(4px);
+.work-Button {
+  color: lightskyblue;
+  background-color: transparent;
+  border-color: lightskyblue;
+  font-size: initial;
 }
 
-.delete-td{
-  width: 1%;
+.work-Button:hover {
+  color: white;
+  background-color: lightskyblue;
+}
+
+
+.delete-td {
+  text-align: right;
+  width: 3%;
 }

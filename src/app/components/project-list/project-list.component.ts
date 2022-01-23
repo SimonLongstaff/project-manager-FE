@@ -6,17 +6,20 @@ import { Task } from '../../interfaces/task';
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.css']
+  styleUrls: ['./project-list.component.css'],
 })
 export class ProjectListComponent implements OnInit {
-
   @Input() projects: Project[] = [];
   @Input() tasks: Task[] = [];
   @Input() subtask: subtask[] = [];
 
-  constructor() { }
+  AddNewProject: boolean = false;
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  ShowAddNewModal(state: boolean): void {
+    this.AddNewProject = state;
   }
-
 }

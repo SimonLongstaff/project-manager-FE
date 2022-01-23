@@ -44,7 +44,31 @@
   margin: 5px;
 }
 
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-icon {
+  margin: 2px;
+}
+
 label {
   font-size: 15px;
   font-weight: bold;
+}
+
+button {
+  text-align: center;
+  font-size: initial;
+  background-color: rgb(16, 97, 151);
+  color: white;
+  border-color: rgb(16, 97, 151);
+  border-radius: 5px;
+}
+
+button:hover {
+  color: rgb(16, 97, 151);
+  background-color: transparent;
 }

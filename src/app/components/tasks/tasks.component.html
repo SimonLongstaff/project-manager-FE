@@ -1,14 +1,14 @@
 <mat-card>
-  <mat-card-title (click)="toggle()">
+  <mat-card-title (click)="RevealDetails()">
     <div class="flex-container">
       <span class="flex-left">{{ task?.task_name }}</span>
       <span class="flex-right">{{ task?.percentage_complete }}%</span>
     </div>
     <app-progress-bar
-    [percentage]="task.percentage_complete"
-  ></app-progress-bar>
+      [percentage]="task.percentage_complete"
+    ></app-progress-bar>
   </mat-card-title>
-  <div [classList]="hidden">
+  <div *ngIf="detailsRevealed">
     <mat-card-content>{{ task?.task_desc }}</mat-card-content>
     <br />
     <app-subtask-table
@@ -17,35 +17,19 @@
       [delete]="delete"
     ></app-subtask-table>
     <div #subtaskButton>
-      <button type="button" class="button full-width" (click)="RevealForm()">
+      <button
+        type="button"
+        class="button full-width"
+        (click)="RevealModal(true)"
+      >
         New Sub-Task
       </button>
     </div>
-    <div class="hidden" #subtaskForm>
-      <div class="task-Entry">
-        <span class="name">
-          <label class="full-width">Name</label>
-          <input class="full-width" type="text" id="name" #name />
-        </span>
-        <span class="desc">
-          <label class="full-width">Description</label>
-          <input class="full-width" type="text" id="desc" #desc />
-        </span>
-        <span class="button-container">
-          <button
-            type="button"
-            class="button full-width"
-            (click)="addSubTask()"
-          >
-            Add
-          </button>
-        </span>
-        <span class="button-container">
-          <button type="button" class="button full-width" (click)="HideForm()">
-            Cancel
-          </button>
-        </span>
-      </div>
-    </div>
+    <app-new-subtask-modal
+      *ngIf="addSubtask"
+      [task]="task"
+      [subtasks]="subtasks"
+      (close)="RevealModal(false)"
+    ></app-new-subtask-modal>
   </div>
 </mat-card>

@@ -1,0 +1,22 @@
+<div class="backdrop"></div>
+
+<mat-card class="alert-box">
+  <mat-card-title>New Project</mat-card-title>
+  <hr />
+  <mat-card-content class="flex-container">
+    <div class="entry-fields">
+      <span class="name">
+        <label class="full-width">Name</label>
+        <input class="full-width" type="text" id="name" #name />
+      </span>
+      <span class="desc">
+        <label class="full-width">Description</label>
+        <input class="full-width" type="text" id="desc" #desc />
+      </span>
+    </div>
+    <div class="alert-box-actions">
+      <button class="btn btn-primary" (click)="addProject()">Add</button>
+      <button class="btn btn-danger" (click)="OnClose()">Close</button>
+    </div></mat-card-content
+  >
+</mat-card>

@@ -8,7 +8,11 @@
       [subtasks]="subtasks"
     ></app-task-list>
     <div id="add-task-button" class="addTask addNewTaskButton">
-      <button (click)="RevealForm()" #addButton>New Task</button>
+      <button (click)="RevealForm()" #addButton>
+        <span class="flex-centered">
+          <mat-icon>add_box</mat-icon> Add Task
+        </span>
+      </button>
     </div>
     <div id="add-task-form" class="hidden" #addForm>
       <div class="task-Entry">

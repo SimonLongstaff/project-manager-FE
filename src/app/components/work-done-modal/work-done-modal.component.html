@@ -1,0 +1,38 @@
+<div class="backdrop"></div>;
+
+<mat-card class="alert-box">
+	<mat-card-title>Log Work</mat-card-title>
+	<mat-card-content class="flex-container">
+		<div class="entry-fields">
+      <span class='date'>
+        <input matInput [matDatepicker]="picker" #date>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </span>
+      <div class='row'>
+      <span class="input" >
+        <label class="full-width">Hours</label>
+        <input class="full-width" type="number" min="0" id="hours" value="0" #hours />
+      </span>
+      <span class="input">
+        <label class="full-width">Minutes</label>
+        <input class="full-width" min="0" max="59" type="number" value="0" id="minutes" #minutes />
+      </span>
+      </div>
+      <div class='row'>
+      <span class="input">
+        <label class="full-width">Percentage Done</label>
+        <input #percentage class="full-width" min="0" max="100" type="number" id="percentage" pattern="[0-9]{3}" value="0" (change)="onPercentUpdate()"/>
+      </span>
+      <span class="input" >
+        <label class="full-width">Subtask Completion</label>
+        <input class="full-width" min="0" max="100" type="number" id="percentage" value="{{subtask?.percentage_complete}}" disabled #percentageDone />
+      </span>
+    </div>
+    </div>
+    <div class="alert-box-actions">
+      <button class="btn btn-primary" (click)="updateWorkDone()" >Add</button>
+      <button class="btn btn-danger" (click)="handleClose()">Close</button>
+    </div>
+	</mat-card-content>
+</mat-card>;
