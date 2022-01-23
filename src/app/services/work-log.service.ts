@@ -31,4 +31,20 @@ export class WorkLogService {
 		console.log("send value", newLog);
 		return this.http.post<Work_Log>(this.apiUrl, newLog);
 	}
+
+	DeleteWorkLog(id: number): void {
+		this.http.delete(this.apiUrl + "/" + id);
+	}
+
+	DeleteAllWorkLogs(subtaskID: number): void {
+		this.http.delete(this.apiUrl + "/subtask_id=" + subtaskID).subscribe({
+			next: data => {
+				return true;
+			},
+			error: error => {
+				console.log(error);
+				return false;
+			}
+		});
+	}
 }

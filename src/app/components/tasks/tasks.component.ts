@@ -3,6 +3,7 @@ import { Project } from "../../interfaces/Project";
 import { Task } from "../../interfaces/task";
 import { subtask } from "../../interfaces/subtask";
 import { SubtaskService } from "./../../services/subtask.service";
+import { WorkLogService } from "./../../services/work-log.service";
 
 @Component({
 	selector: "app-tasks",
@@ -23,7 +24,10 @@ export class TasksComponent implements OnInit {
 	detailsRevealed: boolean = false;
 	addSubtask: boolean = false;
 
-	constructor(private SubtaskService: SubtaskService) {}
+	constructor(
+		private SubtaskService: SubtaskService,
+		private WorkLogService: WorkLogService
+	) {}
 
 	ngOnInit(): void {}
 
@@ -49,6 +53,7 @@ export class TasksComponent implements OnInit {
 
 	delete = (subtask: subtask): void => {
 		if (subtask.id) {
+			this.WorkLogService.DeleteAllWorkLogs(subtask.id);
 			this.SubtaskService.deleteSubTask(subtask.id);
 			this.subtasks.forEach((feSubtask, index) => {
 				if (feSubtask.id == subtask.id) {
