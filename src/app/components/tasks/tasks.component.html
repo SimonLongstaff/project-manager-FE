@@ -15,7 +15,7 @@
       [task]="task"
       [subtasks]="subtasks"
       (subtaskDeleted)="handleSubTaskDeletion($event)"
-      (workLogged)="AddTask()"
+      (workLogged)="UpdatePercentage()"
     ></app-subtask-table>
     <div #subtaskButton>
       <button
@@ -30,7 +30,7 @@
       *ngIf="addSubtask"
       [task]="task"
       [subtasks]="subtasks"
-      (addedTask) ="AddTask()"
+      (addedTask) ="UpdatePercentage()"
       (close)="RevealModal(false)"
     ></app-new-subtask-modal>
   </div>

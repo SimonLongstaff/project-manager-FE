@@ -50,7 +50,7 @@ export class TasksComponent implements OnInit {
 		this.task = updatedTask;
 	}
 
-	AddTask(): void {
+	UpdatePercentage(): void {
 		let counter: number = 0;
 		let percentageAccumulator: number = 0;
 		let percentage: number = 0;
@@ -65,9 +65,13 @@ export class TasksComponent implements OnInit {
 			percentage = Number((percentageAccumulator / counter).toPrecision(1));
 		}
 
-		this.TaskService.updateTaskPercentage(this.task.id, percentage);
-		this.task.percentage_complete = percentage;
-		this.RevealModal(false);
+		this.TaskService.updateTaskPercentage(this.task.id, percentage).subscribe(
+			task => {
+				console.log(task);
+				this.task.percentage_complete = percentage;
+				this.RevealModal(false);
+			}
+		);
 	}
 
 	RevealDetails(): void {

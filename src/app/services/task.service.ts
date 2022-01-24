@@ -40,7 +40,7 @@ export class TaskService {
 	}
 
 	updateTaskPercentage(id: number, percent: number): Observable<Task> {
-		return this.http.patch<Task>(this.apiUrl + "/" + id, {
+		return this.http.put<Task>(this.apiUrl + "/" + id, {
 			percentage_complete: percent
 		});
 	}
