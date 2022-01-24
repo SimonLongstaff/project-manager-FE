@@ -46,8 +46,28 @@ export class TasksComponent implements OnInit {
 		);
 	}
 
-	CalculatePercentage(Task: Task): void {
-		this.task = Task;
+	handleSubTaskDeletion(updatedTask: Task) {
+		this.task = updatedTask;
+	}
+
+	AddTask(): void {
+		let counter: number = 0;
+		let percentageAccumulator: number = 0;
+		let percentage: number = 0;
+
+		this.subtasks.forEach(subtask => {
+			counter += Number(subtask.complexity);
+			percentageAccumulator +=
+				Number(subtask.percentage_complete) * Number(subtask.complexity);
+		});
+
+		if (counter !== 0) {
+			percentage = Number((percentageAccumulator / counter).toPrecision(1));
+		}
+
+		this.TaskService.updateTaskPercentage(this.task.id, percentage);
+		this.task.percentage_complete = percentage;
+		this.RevealModal(false);
 	}
 
 	RevealDetails(): void {

@@ -25,6 +25,7 @@ export class NewSubtaskModalComponent implements OnInit {
 	@ViewChild("complexity") complexity: ElementRef | undefined;
 
 	@Output() close = new EventEmitter<void>();
+	@Output() addedTask = new EventEmitter<subtask>();
 
 	constructor(private SubtaskService: SubtaskService) {}
 
@@ -48,7 +49,7 @@ export class NewSubtaskModalComponent implements OnInit {
 				this.complexity?.nativeElement.value
 			).subscribe(subtask => {
 				this.subtasks.push(subtask);
-				this.close.emit();
+				this.addedTask.emit();
 			});
 		}
 	}

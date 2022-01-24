@@ -15,6 +15,7 @@ export class SubTaskRowComponent implements OnInit {
 	@Input() subtask!: subtask;
 	@Input() index!: number;
 	@Output() delete = new EventEmitter<subtask>();
+	@Output() workLogged = new EventEmitter<void>();
 
 	WorkModalVisible: boolean = false;
 	ModalId: number | undefined = 0;
@@ -46,6 +47,7 @@ export class SubTaskRowComponent implements OnInit {
 
 	updateTask(updatedSubtask: subtask): void {
 		this.subtask.percentage_complete = updatedSubtask.percentage_complete;
+		this.workLogged.emit();
 		this.revealWorkModal(undefined);
 	}
 

@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Task } from "src/app/interfaces/task";
 import { subtask } from "./../../interfaces/subtask";
 import { TaskService } from "./../../services/task.service";
 import { SubtaskService } from "./../../services/subtask.service";
-import { Work_Log } from "./../../interfaces/work_log";
 import { WorkLogService } from "./../../services/work-log.service";
 
 @Component({
@@ -13,9 +12,10 @@ import { WorkLogService } from "./../../services/work-log.service";
 })
 export class SubtaskTableComponent implements OnInit {
 	@Input() task!: Task;
-	@Input() CalculatePercentage!: (args: Task) => void;
+	@Output() subtaskDeleted = new EventEmitter<Task>();
+	@Output() workLogged = new EventEmitter<void>();
 
-	subtasks: subtask[] = [];
+	@Input() subtasks: subtask[] = [];
 
 	WorkModalVisible: boolean = false;
 	ModalId: number | undefined = 0;
@@ -26,13 +26,7 @@ export class SubtaskTableComponent implements OnInit {
 		private WorkLogService: WorkLogService
 	) {}
 
-	ngOnInit(): void {
-		this.SubtaskService.getAllSubTaskByTaskID(this.task.id).subscribe(
-			subtasks => {
-				this.subtasks = subtasks;
-			}
-		);
-	}
+	ngOnInit(): void {}
 
 	delete(subtask: subtask): void {
 		this.WorkLogService.DeleteAllWorkLogs(subtask.id);
@@ -43,6 +37,8 @@ export class SubtaskTableComponent implements OnInit {
 				this.subtasks.splice(index, 1);
 			}
 		});
+
+		this.workLogged.emit();
 	}
 
 	revealWorkModal(id: number | undefined): void {
@@ -52,6 +48,10 @@ export class SubtaskTableComponent implements OnInit {
 
 	setModalId(id: number | undefined): void {
 		this.ModalId = id;
+	}
+
+	handleWorkLogged(): void {
+		this.workLogged.emit();
 	}
 
 	updateTask(updatedSubtask: subtask): void {

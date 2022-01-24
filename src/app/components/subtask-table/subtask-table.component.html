@@ -10,7 +10,7 @@
     </div>
     </mat-card>
 
-  <app-sub-task-row *ngFor="let subtask of subtasks; let i = index" [index]="i"  [subtask]="subtask" [task]="task" (delete)="delete($event)"></app-sub-task-row>
+  <app-sub-task-row *ngFor="let subtask of subtasks; let i = index" [index]="i"  [subtask]="subtask" [task]="task" (delete)="delete($event)" (workLogged)="handleWorkLogged()"></app-sub-task-row>
 
 
   <!-- <tbody>
