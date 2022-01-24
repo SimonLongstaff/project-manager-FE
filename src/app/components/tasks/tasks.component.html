@@ -2,19 +2,18 @@
   <mat-card-title (click)="RevealDetails()">
     <div class="flex-container">
       <span class="flex-left">{{ task?.task_name }}</span>
-      <span class="flex-right">{{ task?.percentage_complete }}%</span>
+      <span class="flex-right">{{ task.percentage_complete }}%</span>
     </div>
     <app-progress-bar
-      [percentage]="task.percentage_complete"
+      [Task]="task"
     ></app-progress-bar>
   </mat-card-title>
   <div *ngIf="detailsRevealed">
     <mat-card-content>{{ task?.task_desc }}</mat-card-content>
     <br />
     <app-subtask-table
-      [subtasks]="filterSubTasks()"
       [task]="task"
-      [delete]="delete"
+      [CalculatePercentage]="CalculatePercentage"
     ></app-subtask-table>
     <div #subtaskButton>
       <button

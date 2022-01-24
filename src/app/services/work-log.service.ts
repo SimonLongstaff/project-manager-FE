@@ -15,6 +15,10 @@ export class WorkLogService {
 		return this.http.get<Work_Log[]>(this.apiUrl);
 	}
 
+	GetBySubtaskID(id: number): Observable<Work_Log[]> {
+		return this.http.get<Work_Log[]>(this.apiUrl + "/subtask_id=" + id);
+	}
+
 	CreateNewWorkLog(
 		subtaskId: number,
 		date: Date,
@@ -28,7 +32,6 @@ export class WorkLogService {
 			percentage_done: Number(percentage)
 		};
 
-		console.log("send value", newLog);
 		return this.http.post<Work_Log>(this.apiUrl, newLog);
 	}
 

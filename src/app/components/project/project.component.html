@@ -4,9 +4,8 @@
     <mat-card-content> {{ project?.project_desc }}</mat-card-content>
     <app-task-list
       [project]="project"
-      [tasks]="tasks"
-      [subtasks]="subtasks"
     ></app-task-list>
+    <mat-card-footer>
     <div id="add-task-button" class="addTask addNewTaskButton">
       <button (click)="RevealForm()" #addButton>
         <span class="flex-centered">
@@ -34,5 +33,6 @@
         </button>
       </div>
     </div>
+  </mat-card-footer>
   </mat-card>
 </div>

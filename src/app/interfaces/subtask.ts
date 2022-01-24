@@ -1,5 +1,5 @@
 export interface subtask {
-	id?: number;
+	id: number;
 	task_id: number;
 	subtask_name: string;
 	subtask_desc: string;

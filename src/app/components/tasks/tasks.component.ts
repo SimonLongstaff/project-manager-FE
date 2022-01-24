@@ -1,9 +1,18 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import {
+	Component,
+	ElementRef,
+	Input,
+	OnInit,
+	ViewChild,
+	ViewChildren
+} from "@angular/core";
 import { Project } from "../../interfaces/Project";
 import { Task } from "../../interfaces/task";
 import { subtask } from "../../interfaces/subtask";
 import { SubtaskService } from "./../../services/subtask.service";
 import { WorkLogService } from "./../../services/work-log.service";
+import { ProgressBarComponent } from "./../Ui_Components/progress-bar/progress-bar.component";
+import { TaskService } from "./../../services/task.service";
 
 @Component({
 	selector: "app-tasks",
@@ -11,36 +20,34 @@ import { WorkLogService } from "./../../services/work-log.service";
 	styleUrls: ["./tasks.component.css"]
 })
 export class TasksComponent implements OnInit {
-	@Input() project: Project | undefined;
-	@Input()
-	task!: Task;
-	@Input() subtasks: subtask[] = [];
+	@Input() project!: Project;
+	@Input() task!: Task;
+	subtasks: subtask[] = [];
 
-	@ViewChild("name") name: ElementRef | undefined;
-	@ViewChild("desc") desc: ElementRef | undefined;
-	@ViewChild("subtaskButton") subtaskButton: ElementRef | undefined;
-	@ViewChild("subtaskForm") subtaskForm: ElementRef | undefined;
+	@ViewChild("name") name!: ElementRef;
+	@ViewChild("desc") desc!: ElementRef;
+	@ViewChild("subtaskButton") subtaskButton!: ElementRef;
+	@ViewChild("subtaskForm") subtaskForm!: ElementRef;
 
 	detailsRevealed: boolean = false;
 	addSubtask: boolean = false;
 
 	constructor(
 		private SubtaskService: SubtaskService,
+		private TaskService: TaskService,
 		private WorkLogService: WorkLogService
 	) {}
 
-	ngOnInit(): void {}
-
-	filterSubTasks(): subtask[] {
-		let retVal: subtask[] = [];
-
-		this.subtasks.forEach(subtask => {
-			if (subtask.task_id === this.task?.id) {
-				retVal.push(subtask);
+	ngOnInit(): void {
+		this.SubtaskService.getAllSubTaskByTaskID(this.task.id).subscribe(
+			subtasks => {
+				this.subtasks = subtasks;
 			}
-		});
+		);
+	}
 
-		return retVal;
+	CalculatePercentage(Task: Task): void {
+		this.task = Task;
 	}
 
 	RevealDetails(): void {
@@ -50,16 +57,4 @@ export class TasksComponent implements OnInit {
 	RevealModal(value: boolean): void {
 		this.addSubtask = value;
 	}
-
-	delete = (subtask: subtask): void => {
-		if (subtask.id) {
-			this.WorkLogService.DeleteAllWorkLogs(subtask.id);
-			this.SubtaskService.deleteSubTask(subtask.id);
-			this.subtasks.forEach((feSubtask, index) => {
-				if (feSubtask.id == subtask.id) {
-					this.subtasks.splice(index, 1);
-				}
-			});
-		}
-	};
 }

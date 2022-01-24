@@ -72,3 +72,7 @@ button:hover {
   color: rgb(16, 97, 151);
   background-color: transparent;
 }
+
+mat-card-footer{
+  margin: 20px;
+}

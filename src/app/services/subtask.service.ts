@@ -12,8 +12,11 @@ export class SubtaskService {
 	constructor(private http: HttpClient) {}
 
 	getAllSubTasks(): Observable<subtask[]> {
-		console.log(this.http.get<subtask[]>(this.apiUrl));
 		return this.http.get<subtask[]>(this.apiUrl);
+	}
+
+	getAllSubTaskByTaskID(taskId: number) {
+		return this.http.get<subtask[]>(this.apiUrl + "/taskId=" + taskId);
 	}
 
 	createNewSubTask(

@@ -1,0 +1,61 @@
+button {
+  border-radius: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+button:active {
+  transform: translateY(4px);
+}
+
+
+.even{
+  background-color: white;
+}
+
+.odd{
+  background-color:rgba(161, 161, 161, 0.788);
+}
+
+.row{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.item{
+  flex:1;
+  width: 200px;
+  justify-content: center;
+}
+
+.button{
+  flex:0.1;
+}
+
+.delete-Button {
+  color: red;
+  background-color: transparent;
+  color: white;
+  background-color: red;
+  border-color: red;
+  font-size: initial;
+}
+
+.delete-Button:hover {
+  color: red;
+  background-color: white;
+}
+
+.work-Button {
+  color: white;
+  background-color: lightskyblue;
+  border-color: lightskyblue;
+  font-size: initial;
+}
+
+.work-Button:hover {
+  color: lightskyblue;
+  background-color: white;
+}
