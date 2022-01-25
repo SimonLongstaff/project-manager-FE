@@ -14,6 +14,7 @@ progress {
 
 .progress-red::-webkit-progress-value {
   background: rgba(255, 0, 0);
+  color: rgba(255, 0, 0, 1);
   border: 1px solid rgba(255, 0, 0, 1);
 }
 
@@ -30,6 +31,7 @@ progress {
 
 .progress-yellow::-webkit-progress-value {
   background: rgb(255, 160, 66);
+  color: rgb(255, 160, 66);
   border: 1px solid rgb(255, 160, 66);
 }
 
@@ -45,6 +47,7 @@ progress {
 }
 
 .progress-green::-webkit-progress-value {
+  color: rgba(0, 167, 0);
   background: rgb(102, 254, 102);
   border: 1px solid rgba(0, 167, 0);
 }
