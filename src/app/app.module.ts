@@ -22,6 +22,8 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatTableModule } from "@angular/material/table";
 import { SubTaskRowComponent } from './components/sub-task-row/sub-task-row.component';
+import { AddTagModalComponent } from './components/add-tag-modal/add-tag-modal.component';
+import { TagDisplayComponent } from './components/tag-display/tag-display.component';
 
 @NgModule({
 	declarations: [
@@ -37,7 +39,9 @@ import { SubTaskRowComponent } from './components/sub-task-row/sub-task-row.comp
 		NewProjectModalComponent,
 		NewSubtaskModalComponent,
 		WorkDoneModalComponent,
-  SubTaskRowComponent
+  SubTaskRowComponent,
+  AddTagModalComponent,
+  TagDisplayComponent
 	],
 	imports: [
 		HttpClientModule,

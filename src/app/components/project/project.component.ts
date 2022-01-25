@@ -4,6 +4,8 @@ import { Project } from "src/app/interfaces/Project";
 import { Task } from "../../interfaces/task";
 import { subtask } from "../../interfaces/subtask";
 import { TaskService } from "./../../services/task.service";
+import {Tag} from "../../interfaces/tag";
+import {TagsService} from "../../services/tags.service";
 
 @Component({
 	selector: "app-project",
@@ -13,13 +15,14 @@ import { TaskService } from "./../../services/task.service";
 export class ProjectComponent implements OnInit {
 	@Input() project!: Project;
 	tasks: Task[] = [];
+  tag: Tag | undefined;
 
 	@ViewChild("taskName") name: ElementRef | undefined;
 	@ViewChild("taskDesc") desc: ElementRef | undefined;
 	@ViewChild("addButton") addButton: ElementRef | undefined;
 	@ViewChild("addForm") addForm: ElementRef | undefined;
 
-	constructor(private TaskService: TaskService) {}
+	constructor(private TaskService: TaskService, private TagService:TagsService) {}
 
 	ngOnInit(): void {
 		this.TaskService.getAllTasksByProjectId(this.project.id).subscribe(
@@ -27,6 +30,11 @@ export class ProjectComponent implements OnInit {
 				this.tasks = tasks;
 			}
 		);
+
+    if(this.project.tag_id != null){
+      this.TagService.GetTag(this.project.tag_id).subscribe((tag)=>{this.tag = tag});
+    }
+
 	}
 
 	addNewTask(): void {

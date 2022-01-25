@@ -1,38 +1,43 @@
 <div>
   <mat-card class="project-card">
-    <mat-card-title>{{ project?.project_name }}</mat-card-title>
-    <mat-card-content> {{ project?.project_desc }}</mat-card-content>
+    <mat-card-title class="flex-container">
+      <span class="flex-left">{{ project?.project_name }} </span>
+      <span class="flex-right">
+        <app-tag-display class="flex-right" *ngIf="tag" [Tag]="tag"></app-tag-display>
+      </span>
+    </mat-card-title>
+    <mat-card-content class="description"> {{ project?.project_desc }}</mat-card-content>
     <app-task-list
       [project]="project"
     ></app-task-list>
     <mat-card-footer>
-    <div id="add-task-button" class="addTask addNewTaskButton">
-      <button (click)="RevealForm()" #addButton>
+      <div id="add-task-button" class="addTask addNewTaskButton">
+        <button (click)="RevealForm()" #addButton>
         <span class="flex-centered">
           <mat-icon>add_box</mat-icon> Add Task
         </span>
-      </button>
-    </div>
-    <div id="add-task-form" class="hidden" #addForm>
-      <div class="task-Entry">
+        </button>
+      </div>
+      <div id="add-task-form" class="hidden" #addForm>
+        <div class="task-Entry">
         <span class="name">
           <label class="full-width">Name</label>
-          <input class="full-width" type="text" id="name" #taskName />
+          <input class="full-width" type="text" id="name" #taskName/>
         </span>
-        <span class="desc">
+          <span class="desc">
           <label class="full-width">Description</label>
-          <input class="full-width" type="text" id="desc" #taskDesc />
+          <input class="full-width" type="text" id="desc" #taskDesc/>
         </span>
+        </div>
+        <div class="addTask">
+          <button type="button" class="button full-width" (click)="addNewTask()">
+            Add
+          </button>
+          <button type="button" class="button full-width" (click)="HideForm()">
+            Cancel
+          </button>
+        </div>
       </div>
-      <div class="addTask">
-        <button type="button" class="button full-width" (click)="addNewTask()">
-          Add
-        </button>
-        <button type="button" class="button full-width" (click)="HideForm()">
-          Cancel
-        </button>
-      </div>
-    </div>
-  </mat-card-footer>
+    </mat-card-footer>
   </mat-card>
 </div>

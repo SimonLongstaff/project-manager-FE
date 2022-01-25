@@ -1,0 +1,44 @@
+<div class="backdrop">
+
+<mat-card class="alert-box">
+  <mat-card-title>New Tag</mat-card-title>
+  <hr/>
+  <mat-card-content>
+    <div class="flex-container">
+    <span class="name">
+      <label class="full-width">Tag:</label>
+      <input #name class="full-width" id="name" type="text"/>
+    </span>
+      <span class="select-input">
+      <label for="type">Type:</label>
+      <select #type id="type" name="type">
+        <option value="1">Project</option>
+        <option value="2">Task</option>
+      </select>
+    </span>
+      <span class="select-input">
+      <label for="colour">Colour:</label>
+      <select #colour id="colour" name="colour">
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+        <option value="orange">Orange</option>
+        <option value="purple">Purple</option>
+      </select>
+    </span>
+    </div>
+    <div class="alert-box-actions">
+      <button class="btn btn-primary" (click)="addTag()">
+        <span class="flex-centered"><mat-icon>save</mat-icon>Save</span>
+      </button>
+      <button class="btn btn-danger" (click)="handleClose()">
+        <span class="flex-centered"><mat-icon>cancel</mat-icon>Cancel</span>
+      </button>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+</div>

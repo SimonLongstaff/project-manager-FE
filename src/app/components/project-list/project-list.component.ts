@@ -13,6 +13,7 @@ export class ProjectListComponent implements OnInit {
 	projects: Project[] = [];
 
 	AddNewProject: boolean = false;
+  AddNewTag: boolean = false;
 
 	constructor(private ProjectService: ProjectService) {}
 
@@ -25,4 +26,8 @@ export class ProjectListComponent implements OnInit {
 	ShowAddNewModal(state: boolean): void {
 		this.AddNewProject = state;
 	}
+
+  RevealNewTagModal(): void {
+    this.AddNewTag = !this.AddNewTag;
+  }
 }

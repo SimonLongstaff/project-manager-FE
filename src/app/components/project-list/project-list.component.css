@@ -6,21 +6,40 @@ mat-card {
 button {
   text-align: center;
   font-size: initial;
-  background-color: rgb(46, 214, 46);
-  color: white;
-  border-color: rgb(46, 214, 46);
   border-radius: 5px;
   padding: 5px;
+  margin-left: 10px;
 }
 
-button:hover {
-  color: rgb(46, 214, 46);
-  background-color: transparent;
-  border-color: rgb(46, 214, 46);
+button:active {
+  transform: translateY(4px);
 }
 
 mat-icon {
   margin: 2px;
+}
+
+.button-project{
+  background-color: rgb(37, 131, 37);
+  color: white;
+  border-color: rgb(37, 131, 37);
+}
+
+.button-project:hover{
+  color: rgb(37, 131, 37);
+  background-color: transparent;
+  border-color: rgb(37, 131, 37);
+}
+
+.button-tag{
+  background-color: rgb(30, 153, 173);
+  color: white;
+  border-color: rgb(30, 153, 173);
+}
+
+.button-tag:hover{
+  color: rgb(30, 153, 173);
+  background-color: transparent;
 }
 
 .button-row {

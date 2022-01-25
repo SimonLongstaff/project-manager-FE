@@ -7,8 +7,10 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Project } from 'src/app/interfaces/Project';
-import { ProjectService } from './../../services/project.service';
+import {Project} from 'src/app/interfaces/Project';
+import {ProjectService} from './../../services/project.service';
+import {TagsService} from "../../services/tags.service";
+import {Tag} from "../../interfaces/tag";
 
 @Component({
   selector: 'app-new-project-modal',
@@ -16,15 +18,27 @@ import { ProjectService } from './../../services/project.service';
   styleUrls: ['./new-project-modal.component.css'],
 })
 export class NewProjectModalComponent implements OnInit {
+
   @Input() Projects: Project[] = [];
-  @ViewChild('name') name: ElementRef | undefined;
-  @ViewChild('desc') desc: ElementRef | undefined;
+  Tags: Tag[] = [];
+
+  @ViewChild('name')
+  name!: ElementRef;
+
+  @ViewChild('desc')
+  desc!: ElementRef;
+
+  @ViewChild('tag')
+  tag!: ElementRef;
 
   @Output() close = new EventEmitter<void>();
 
-  constructor(private ProjectService: ProjectService) {}
+  constructor(private ProjectService: ProjectService, private TagsService:TagsService) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.TagsService.GetAllTags().subscribe((tags)=>{this.Tags = tags});
+  }
 
   OnClose(): void {
     this.close.emit();
@@ -32,16 +46,19 @@ export class NewProjectModalComponent implements OnInit {
 
   addProject(): void {
     if (
-      this.name?.nativeElement.value != '' &&
-      this.desc?.nativeElement.value != ''
-    ) {
-      this.ProjectService.addProject(
-        this.name?.nativeElement.value,
-        this.desc?.nativeElement.value
-      ).subscribe((project) => {
-        this.Projects.push(project);
-        this.close.emit();
-      });
-    }
+      this.name?.nativeElement.value === '' &&
+      this.desc?.nativeElement.value === ''
+    ) {return;}
+
+    this.ProjectService.addProject(
+      this.name.nativeElement.value,
+      this.desc.nativeElement.value,
+      this.tag.nativeElement.value
+    ).subscribe((project) => {
+      this.Projects.push(project);
+      this.close.emit();
+    });
+
+
   }
 }

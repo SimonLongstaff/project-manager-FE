@@ -7,6 +7,10 @@
   display: none;
 }
 
+.description{
+  margin-left: 15px;
+}
+
 .addNewTaskButton {
   margin-top: 10px;
 }
@@ -49,6 +53,27 @@
   justify-content: center;
   align-items: center;
 }
+
+.flex-container {
+  display: flex;
+  width: 100%;
+}
+
+.flex-right {
+  flex: 0;
+  width: 100%;
+  text-align: right;
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.flex-left {
+  flex: 1;
+  width: 100%;
+  align-self: flex-start;
+  justify-self: flex-start;
+}
+
 
 mat-icon {
   margin: 2px;

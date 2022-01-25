@@ -1,0 +1,14 @@
+div {
+  min-width: 100px;
+  font-size: small;
+  text-align: center;
+  border: 20px;
+  padding: 1px;
+  border-radius: 5px;
+}
+
+.blue {
+  background-color: rgba(100, 149, 237, 0.75);
+  color: white;
+  border: 3px solid rgb(41, 106, 222);
+}

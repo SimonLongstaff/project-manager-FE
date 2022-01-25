@@ -1,14 +1,21 @@
 <div>
   <mat-card>
     <div class="button-row">
-      <button (click)="ShowAddNewModal(true)">
+      <button class="button-project" (click)="ShowAddNewModal(true)">
         <span class="flex-centered"
-          ><mat-icon>library_add</mat-icon> New Project
+        ><mat-icon>library_add</mat-icon> New Project
+        </span>
+      </button>
+      <button class="button-tag" (click)="RevealNewTagModal()">
+        <span class="flex-centered">
+          <mat-icon>fiber_new</mat-icon>
+          New Tag
         </span>
       </button>
     </div>
   </mat-card>
 </div>
+<app-add-tag-modal *ngIf="AddNewTag" (close)="RevealNewTagModal()"></app-add-tag-modal>
 <app-new-project-modal
   [Projects]="projects"
   *ngIf="AddNewProject"
