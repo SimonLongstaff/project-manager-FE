@@ -4,6 +4,7 @@
   <span class='item'>{{ subtask.subtask_desc }}</span>
   <span class='item'>{{getComplexityString(subtask.complexity)}}</span>
   <span class='item'>{{ subtask.percentage_complete }}%</span>
+  <span class='button-contaner'>
   <span class='button'><button type="button" class="work-Button" (click)="revealWorkModal(subtask.id)" >
     <span class="flex-centered"><mat-icon>work</mat-icon></span>
   </button>
@@ -12,6 +13,7 @@
     <button type="button" class="delete-Button" (click)="handleDelete(subtask)" >
     <span class="flex-centered"><mat-icon>delete</mat-icon></span>
   </button>
+</span>
 </span>
 <app-work-done-modal *ngIf="WorkModalVisible && ModalId === subtask.id" [subtask]="subtask" (close)="revealWorkModal(undefined)" (taskUpdate)="updateTask($event)"></app-work-done-modal>
 </div>
