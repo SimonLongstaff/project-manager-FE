@@ -19,25 +19,31 @@ mat-icon {
   margin: 2px;
 }
 
-.button-project{
+.nav-card{
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.button-project {
   background-color: rgb(37, 131, 37);
   color: white;
   border-color: rgb(37, 131, 37);
 }
 
-.button-project:hover{
+.button-project:hover {
   color: rgb(37, 131, 37);
   background-color: transparent;
   border-color: rgb(37, 131, 37);
 }
 
-.button-tag{
+.button-tag {
   background-color: rgb(30, 153, 173);
   color: white;
   border-color: rgb(30, 153, 173);
 }
 
-.button-tag:hover{
+.button-tag:hover {
   color: rgb(30, 153, 173);
   background-color: transparent;
 }
@@ -51,6 +57,13 @@ mat-icon {
 
 .flex-centered {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
+}
+
+.aligned-end {
+  display: flex;
+  flex: 0.1;
+  justify-content: flex-end;
 }
