@@ -28,4 +28,16 @@ export class ProjectService {
 
     return this.http.post<Project>(this.apiUrl, newProject);
   }
+
+  DeleteProject(projectId: number): void {
+    this.http.delete(this.apiUrl + "/" + projectId).subscribe({
+      next: data => {
+        return true;
+      },
+      error: error => {
+        console.log(error);
+        return false;
+      }
+    })
+  }
 }

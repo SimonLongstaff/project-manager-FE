@@ -40,6 +40,18 @@ export class TaskService {
     return this.http.post<Task>(this.apiUrl, newTask);
   }
 
+  deleteTask(taskId: number): void {
+    this.http.delete(this.apiUrl + "/" + taskId ).subscribe({
+      next: data => {
+        return true;
+      },
+      error: error => {
+        console.log(error);
+        return false;
+      }
+    });
+  }
+
   updateTaskPercentage(id: number, percent: number): Observable<Task> {
     return this.http.put<Task>(this.apiUrl + "/" + id, {
       percentage_complete: percent

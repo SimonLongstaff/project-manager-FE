@@ -22,4 +22,12 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
+
+  handleDelete(deleteTask: Task) {
+    this.tasks.forEach((task, index) => {
+      if (task.id === deleteTask.id) {
+        this.tasks.splice(index, 1);
+      }
+    })
+  }
 }

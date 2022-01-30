@@ -1,35 +1,14 @@
+<mat-card  class="blackCard">
+  <div class='row'>
+    <span class='name-header'>Name</span>
+    <span class='header-desc'>Description</span>
+    <span class='header'>Complexity</span>
+    <span class='header'>Percentage Complete</span>
+    <span class='header'></span>
+  </div>
+</mat-card>
 
+<app-sub-task-row *ngFor="let subtask of subtasks; let i = index" [index]="i" [subtask]="subtask" [task]="task"
+                  (delete)="delete($event)" (workLogged)="handleWorkLogged()"></app-sub-task-row>
 
- <mat-card class="blackCard">
-    <div class='row'>
-      <span class='header'>Name</span>
-      <span class='header'>Description</span>
-      <span class='header'>Complexity</span>
-      <span class='header'>Percentage Complete</span>
-      <span class='header'></span>
-    </div>
-    </mat-card>
-
-  <app-sub-task-row *ngFor="let subtask of subtasks; let i = index" [index]="i"  [subtask]="subtask" [task]="task" (delete)="delete($event)" (workLogged)="handleWorkLogged()"></app-sub-task-row>
-
-
-  <!-- <tbody>
-    <tr *ngFor="let subtask of subtasks;" >
-      <td>{{ subtask.subtask_name }}</td>
-      <td>{{ subtask.subtask_desc }}</td>
-      <td>{{getComplexityString(subtask.complexity)}}</td>
-      <td>{{ subtask.percentage_complete }}</td>
-      <td class="delete-td">
-        <button type="button" class="work-Button" (click)="revealWorkModal(subtask.id)" >
-          <span class="flex-centered"><mat-icon>work</mat-icon></span>
-        </button>
-        <button type="button" class="delete-Button" (click)="delete(subtask)">
-          <span class="flex-centered"><mat-icon>delete</mat-icon></span>
-        </button>
-
-      </td>
-    </tr>
-  </tbody>
-</table> -->
-
-<hr />
+<hr/>

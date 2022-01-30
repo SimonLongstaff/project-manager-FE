@@ -24,6 +24,12 @@
   margin-left: 15px;
 }
 
+.delete-Button{
+  background-color: rgb(166, 16, 31);
+  color: white;
+  border-color: rgb(166, 16, 31);;
+}
+
 .task-Entry {
   display: flex;
   margin-top: 20px;
@@ -87,6 +93,7 @@ label {
 button {
   text-align: center;
   font-size: initial;
+  margin-left: 5px;
   background-color: rgb(16, 97, 151);
   color: white;
   border-color: rgb(16, 97, 151);

@@ -23,6 +23,14 @@ export class ProjectListComponent implements OnInit {
 		});
 	}
 
+  handleDelete(deletedProject: Project){
+    this.projects.forEach((project, index) => {
+      if (project.id === deletedProject.id){
+        this.projects.splice(index, 1);
+      }
+    })
+  }
+
 	ShowAddNewModal(state: boolean): void {
 		this.AddNewProject = state;
 	}

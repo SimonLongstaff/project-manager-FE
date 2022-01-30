@@ -1,4 +1,4 @@
-<div>
+<div xmlns="http://www.w3.org/1999/html">
   <mat-card class="project-card">
     <mat-card-title class="flex-container">
       <span class="flex-left">{{ project?.project_name }} </span>
@@ -16,6 +16,8 @@
         <span class="flex-centered">
           <mat-icon>add_box</mat-icon> Add Task
         </span>
+        </button>
+        <button class="delete-Button" (click)="DeleteProject()" *ngIf="tasks.length === 0"><span class="flex-centered">  <mat-icon>delete</mat-icon>Delete</span>
         </button>
       </div>
       <div id="add-task-form" class="hidden" #addForm>

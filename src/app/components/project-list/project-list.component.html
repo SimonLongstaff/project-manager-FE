@@ -23,6 +23,6 @@
 ></app-new-project-modal>
 <div *ngFor="let project of projects">
   <app-project
-    [project]="project"
+    [project]="project" (delete)="handleDelete($event)"
   ></app-project>
 </div>

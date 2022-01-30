@@ -12,11 +12,18 @@
     <mat-card-content>{{ task?.task_desc }}</mat-card-content>
     <br />
     <app-subtask-table
+      *ngIf="subtasks.length > 0"
       [task]="task"
       [subtasks]="subtasks"
       (subtaskDeleted)="handleSubTaskDeletion($event)"
       (workLogged)="UpdatePercentage()"
     ></app-subtask-table>
+    <div *ngIf="subtasks.length === 0">
+      <button
+        type="button"
+        class="button"
+      (click)="DeleteTask()">Delete</button>
+    </div>
     <div #subtaskButton>
       <button
         type="button"

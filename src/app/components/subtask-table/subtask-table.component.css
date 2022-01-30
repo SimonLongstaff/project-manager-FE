@@ -67,6 +67,16 @@ button:active {
   width: 200vw;
 }
 
+.header-desc {
+  flex: 2;
+  width: 200vw;
+}
+
+.name-header {
+  flex: 0.5;
+  width: 50vw;
+}
+
 .row {
   display: flex;
   width: 100%;
