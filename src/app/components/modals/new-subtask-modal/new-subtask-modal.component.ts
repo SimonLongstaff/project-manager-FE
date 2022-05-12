@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { subtask } from "src/app/interfaces/subtask";
 import { Task } from "src/app/interfaces/task";
-import { SubtaskService } from "./../../services/subtask.service";
+import { SubtaskService } from "../../../services/subtask.service";
 
 @Component({
 	selector: "app-new-subtask-modal",

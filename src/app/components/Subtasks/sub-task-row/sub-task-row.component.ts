@@ -1,9 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { subtask } from "src/app/interfaces/subtask";
-import { WorkLogService } from "./../../services/work-log.service";
-import { SubtaskService } from "./../../services/subtask.service";
 import { Task } from "src/app/interfaces/task";
-import { TaskService } from "./../../services/task.service";
 
 @Component({
 	selector: "app-sub-task-row",

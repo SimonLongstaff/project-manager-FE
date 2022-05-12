@@ -44,6 +44,14 @@ export class ProjectListComponent implements OnInit {
     })
   }
 
+  handleArchive(archivedProject: Project){
+    this.projects.forEach((project, index) => {
+      if (project.id === archivedProject.id) {
+        project.is_archived = archivedProject.is_archived;
+      }
+    })
+  }
+
   ShowAddNewModal(state: boolean): void {
     this.AddNewProject = state;
   }

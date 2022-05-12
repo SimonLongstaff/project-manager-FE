@@ -1,43 +1,52 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Project} from '../interfaces/Project';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Project } from "../interfaces/Project";
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: "root"
 })
 export class ProjectService {
-  private apiUrl: string = 'http://localhost:3000/projects';
+	private apiUrl: string = "http://localhost:3000/projects";
 
-  constructor(private http: HttpClient) {
-  }
+	constructor(private http: HttpClient) {}
 
-  getProjects(): Observable<Project[]> {
-    console.log(this.http.get(this.apiUrl));
-    return this.http.get<Project[]>(this.apiUrl);
-  }
+	getProjects(): Observable<Project[]> {
+		console.log(this.http.get(this.apiUrl));
+		return this.http.get<Project[]>(this.apiUrl);
+	}
 
-  addProject(name: string, desc: string, tagId: number | null): Observable<Project> {
-    let newProject = {
-      project_name: name,
-      project_desc: desc,
-      is_complete: 0,
-      tag_id: Number(tagId),
-      is_archived: false
-    };
+	addProject(
+		name: string,
+		desc: string,
+		tagId: number | null
+	): Observable<Project> {
+		let newProject = {
+			project_name: name,
+			project_desc: desc,
+			is_complete: 0,
+			tag_id: Number(tagId),
+			is_archived: false
+		};
 
-    return this.http.post<Project>(this.apiUrl, newProject);
-  }
+		return this.http.post<Project>(this.apiUrl, newProject);
+	}
 
-  DeleteProject(projectId: number): void {
-    this.http.delete(this.apiUrl + "/" + projectId).subscribe({
-      next: data => {
-        return true;
-      },
-      error: error => {
-        console.log(error);
-        return false;
-      }
-    })
-  }
+	DeleteProject(projectId: number): void {
+		this.http.delete(this.apiUrl + "/" + projectId).subscribe({
+			next: data => {
+				return true;
+			},
+			error: error => {
+				console.log(error);
+				return false;
+			}
+		});
+	}
+
+	ArchiveProject(projectID: number, isArchived: Boolean): Observable<Project> {
+		let patchUrl = this.apiUrl + "/" + projectID;
+		let updateValue = { is_archived: isArchived };
+		return this.http.patch<Project>(patchUrl, updateValue);
+	}
 }

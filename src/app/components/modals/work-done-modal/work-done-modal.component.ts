@@ -7,9 +7,9 @@ import {
 	Output,
 	ViewChild
 } from "@angular/core";
-import { subtask } from "./../../interfaces/subtask";
-import { SubtaskService } from "./../../services/subtask.service";
-import { WorkLogService } from "./../../services/work-log.service";
+import { subtask } from "../../../interfaces/subtask";
+import { SubtaskService } from "../../../services/subtask.service";
+import { WorkLogService } from "../../../services/work-log.service";
 
 @Component({
 	selector: "app-work-done-modal",

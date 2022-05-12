@@ -4,4 +4,5 @@ export interface Project {
 	project_desc: string;
 	is_complete: boolean;
 	tag_id: number;
+  is_archived: boolean;
 }

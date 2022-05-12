@@ -1,12 +1,12 @@
 <div>
   <mat-card class="nav-card">
     <div class="button-row">
-      <button class="button-project" (click)="ShowAddNewModal(true)">
+      <button (click)="ShowAddNewModal(true)" class="button-project">
         <span class="flex-centered"
         ><mat-icon>library_add</mat-icon> New Project
         </span>
       </button>
-      <button class="button-tag" (click)="RevealNewTagModal()">
+      <button (click)="RevealNewTagModal()" class="button-tag">
         <span class="flex-centered">
           <mat-icon>fiber_new</mat-icon>
           New Tag
@@ -15,21 +15,26 @@
     </div>
     <mat-form-field class="aligned-end">
       <mat-label>Filter By Tag</mat-label>
-      <mat-select [(value)]="selected" (selectionChange)="setTagFilter()">
+      <mat-select (selectionChange)="setTagFilter()" [(value)]="selected">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.tag_name}}</mat-option>
       </mat-select>
     </mat-form-field>
   </mat-card>
 </div>
-<app-add-tag-modal *ngIf="AddNewTag" (close)="RevealNewTagModal()"></app-add-tag-modal>
+<app-add-tag-modal (close)="RevealNewTagModal()" *ngIf="AddNewTag"></app-add-tag-modal>
 <app-new-project-modal
-  [Projects]="projects"
-  *ngIf="AddNewProject"
   (close)="ShowAddNewModal(false)"
+  *ngIf="AddNewProject"
+  [Projects]="projects"
 ></app-new-project-modal>
+<h2>Active Projects</h2>
 <div *ngFor="let project of projects">
-  <app-project *ngIf="  selected === undefined || project.tag_id === selected.id "
-               [project]="project" (delete)="handleDelete($event)"
+  <app-project (archived)="handleArchive($event)"
+               (delete)="handleDelete($event)" *ngIf=" project.is_archived === false &&  (selected === undefined || project.tag_id === selected.id)" [project]="project"
   ></app-project>
+</div>
+<h2>Archived Projects</h2>
+<div *ngFor="let project of projects">
+  <app-archived-project (archived)="handleArchive($event)" *ngIf="project.is_archived === true &&  (selected === undefined || project.tag_id === selected.id)" [project]="project"></app-archived-project>
 </div>

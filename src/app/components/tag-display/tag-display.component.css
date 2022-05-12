@@ -6,8 +6,52 @@ div {
   padding: 1px;
 }
 
+.black {
+  background-color: rgb(2, 19, 21);
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);;
+}
+
+.white {
+  background-color: rgb(255, 255, 255);
+  color: rgb(161, 161, 161);
+  border: 1px solid rgb(161, 161, 161);
+}
+
+.Red {
+  background-color: rgb(255, 255, 255);
+  color: rgb(161, 161, 161);
+  border: 1px solid rgb(161, 161, 161);
+}
+
 .blue {
   background-color: rgba(100, 149, 237, 0.75);
   color: rgb(29, 79, 168);
-  border: 1px solid rgb(29, 79, 168);;
+  border: 1px solid rgb(29, 79, 168);
 }
+
+.green {
+  background-color: rgba(33, 178, 97, 0.75);
+  color: rgb(33, 87, 18);
+  border: 1px solid rgb(33, 87, 18);
+}
+
+.yellow {
+  background-color: rgba(229, 219, 0, 0.75);
+  color: rgb(139, 141, 1);
+  border: 1px solid rgb(139, 141, 1);
+}
+
+.orange {
+  background-color: rgba(246, 132, 49, 0.75);
+  color: rgb(141, 59, 1);
+  border: 1px solid rgb(141, 59, 1);
+}
+
+.purple {
+  background-color: rgba(125, 63, 248, 0.75);
+  color: rgb(95, 19, 190);
+  border: 1px solid rgb(95, 19, 190);;
+}
+
+
