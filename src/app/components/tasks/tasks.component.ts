@@ -48,13 +48,18 @@ export class TasksComponent implements OnInit {
 		);
 	}
 
-	handleSubTaskDeletion(updatedTask: Task) {
-		this.task = updatedTask;
+	handleSubTaskDeletion(deleteSubtask: subtask): void {
+		this.subtasks.forEach(subtask => {
+			if (subtask.id == deleteSubtask.id) {
+				this.subtasks.splice(this.subtasks.indexOf(subtask), 1);
+			}
+		});
 	}
 
 	DeleteTask(): void {
 		this.TaskService.deleteTask(this.task.id);
 		this.delete.emit(this.task);
+		this.UpdatePercentage();
 	}
 
 	UpdatePercentage(): void {

@@ -2,6 +2,7 @@
   <mat-card class="project-card">
     <mat-card-title class="flex-container">
       <span class="flex-left">{{ project?.project_name }} </span>
+      <span class="time">{{ConvertMinutesToDaysandHours(GetTimeSpent())}}</span>
       <span class="flex-right">
         <app-tag-display *ngIf="tag" [Tag]="tag" class="flex-right"></app-tag-display>
       </span>
@@ -34,7 +35,7 @@
         </span>
         </div>
         <div class="addTask">
-          <button (click)="addNewTask()" class="button full-width" type="button">
+          <button (click)="AddNewTask()" class="button full-width" type="button">
             Add
           </button>
           <button (click)="HideForm()" class="button full-width" type="button">

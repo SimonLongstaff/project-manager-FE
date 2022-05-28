@@ -14,6 +14,8 @@ import { TaskService } from "../../services/task.service";
 import { Tag } from "../../interfaces/tag";
 import { TagsService } from "../../services/tags.service";
 import { ProjectService } from "../../services/project.service";
+import { WorkLogService } from "../../services/work-log.service";
+import { Work_Log } from "../../interfaces/work_log";
 
 @Component({
 	selector: "app-project",
@@ -23,6 +25,7 @@ import { ProjectService } from "../../services/project.service";
 export class ProjectComponent implements OnInit {
 	@Input() project!: Project;
 	tasks: Task[] = [];
+	worklog: Work_Log[] = [];
 	tag: Tag | undefined;
 
 	@Output() delete = new EventEmitter<Project>();
@@ -36,7 +39,8 @@ export class ProjectComponent implements OnInit {
 	constructor(
 		private TaskService: TaskService,
 		private TagService: TagsService,
-		private ProjectService: ProjectService
+		private ProjectService: ProjectService,
+		private WorklogService: WorkLogService
 	) {}
 
 	ngOnInit(): void {
@@ -46,6 +50,11 @@ export class ProjectComponent implements OnInit {
 				console.log(this.tasks);
 			}
 		);
+
+		this.WorklogService.GetByProjectID(this.project.id).subscribe(worklog => {
+			this.worklog = worklog;
+			console.log(this.worklog);
+		});
 
 		if (this.project.tag_id != null) {
 			this.TagService.GetTag(this.project.tag_id).subscribe(tag => {
@@ -68,7 +77,31 @@ export class ProjectComponent implements OnInit {
 		);
 	}
 
-	addNewTask(): void {
+	GetTimeSpent(): number {
+		let time = 0;
+		this.worklog.forEach(log => {
+			time += log.time_spent;
+		});
+
+		return time;
+	}
+
+	ConvertMinutesToHours(minutes: number): string {
+		let hours = Math.floor(minutes / 60);
+		let minutesLeft = minutes % 60;
+
+		return `${hours}h ${minutesLeft}m`;
+	}
+
+	ConvertMinutesToDaysandHours(minutes: number): string {
+		let days = Math.floor(minutes / 1440);
+		let hours = Math.floor((minutes % 1440) / 60);
+		let minutesLeft = minutes % 60;
+
+		return `${days}d ${hours}h ${minutesLeft}m`;
+	}
+
+	AddNewTask(): void {
 		if (
 			this.name?.nativeElement.value != "" &&
 			this.desc?.nativeElement.value != "" &&

@@ -27,6 +27,7 @@ import { TagDisplayComponent } from "./components/tag-display/tag-display.compon
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { ArchivedProjectComponent } from "./components/archived-project/archived-project.component";
+import { SubtaskCardComponent } from "./components/subtask-card/subtask-card.component";
 
 @NgModule({
 	declarations: [
@@ -45,7 +46,8 @@ import { ArchivedProjectComponent } from "./components/archived-project/archived
 		SubTaskRowComponent,
 		AddTagModalComponent,
 		TagDisplayComponent,
-		ArchivedProjectComponent
+		ArchivedProjectComponent,
+		SubtaskCardComponent
 	],
 	imports: [
 		HttpClientModule,

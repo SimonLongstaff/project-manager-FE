@@ -10,6 +10,7 @@ import {
 import { subtask } from "../../../interfaces/subtask";
 import { SubtaskService } from "../../../services/subtask.service";
 import { WorkLogService } from "../../../services/work-log.service";
+import { TaskService } from "../../../services/task.service";
 
 @Component({
 	selector: "app-work-done-modal",
@@ -18,6 +19,7 @@ import { WorkLogService } from "../../../services/work-log.service";
 })
 export class WorkDoneModalComponent implements OnInit {
 	@Input() subtask!: subtask;
+	projectId: number = 0;
 
 	@Output() close = new EventEmitter<void>();
 	@Output() taskUpdate = new EventEmitter<subtask>();
@@ -31,10 +33,15 @@ export class WorkDoneModalComponent implements OnInit {
 
 	constructor(
 		private SubtaskService: SubtaskService,
-		private WorkLogService: WorkLogService
+		private WorkLogService: WorkLogService,
+		private TaskService: TaskService
 	) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.TaskService.getTaskById(this.subtask.task_id).subscribe(task => {
+			this.projectId = task.project_id;
+		});
+	}
 
 	handleClose(): void {
 		this.close.emit();
@@ -64,7 +71,7 @@ export class WorkDoneModalComponent implements OnInit {
 	}
 
 	getDate(): Date {
-		return new Date(this.date.nativeElement.value);
+		return new Date();
 	}
 
 	updateWorkDone(): void {
@@ -76,6 +83,7 @@ export class WorkDoneModalComponent implements OnInit {
 
 		this.WorkLogService.CreateNewWorkLog(
 			this.subtask?.id,
+			this.projectId,
 			this.getDate(),
 			this.calculateTime(),
 			this.percentage.nativeElement.value

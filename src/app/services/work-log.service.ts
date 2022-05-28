@@ -7,7 +7,11 @@ import { Work_Log } from "../interfaces/work_log";
 	providedIn: "root"
 })
 export class WorkLogService {
-	private apiUrl: string = "http://localhost:3000/work-log";
+	private apiUrl: string =
+		window.location.protocol +
+		"//" +
+		window.location.hostname +
+		":3000/work-log";
 
 	constructor(private http: HttpClient) {}
 
@@ -19,14 +23,20 @@ export class WorkLogService {
 		return this.http.get<Work_Log[]>(this.apiUrl + "/subtask_id=" + id);
 	}
 
+	GetByProjectID(id: number): Observable<Work_Log[]> {
+		return this.http.get<Work_Log[]>(this.apiUrl + "/project_id=" + id);
+	}
+
 	CreateNewWorkLog(
 		subtaskId: number,
+		projectId: number,
 		date: Date,
 		time: number,
 		percentage: number
 	): Observable<Work_Log> {
 		let newLog = {
 			subtask_id: subtaskId,
+			project_id: projectId,
 			date: date.toISOString(),
 			time_spent: time,
 			percentage_done: Number(percentage)

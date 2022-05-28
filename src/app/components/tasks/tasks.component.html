@@ -11,13 +11,14 @@
   <div *ngIf="detailsRevealed">
     <mat-card-content>{{ task?.task_desc }}</mat-card-content>
     <br />
-    <app-subtask-table
-      *ngIf="subtasks.length > 0"
-      [task]="task"
-      [subtasks]="subtasks"
-      (subtaskDeleted)="handleSubTaskDeletion($event)"
+    <h2>Subtasks</h2>
+    <app-subtask-card
+      *ngFor="let subtask of subtasks"
+      [Subtask]="subtask"
+      [Task]="task"
+      (deleted)="handleSubTaskDeletion($event)"
       (workLogged)="UpdatePercentage()"
-    ></app-subtask-table>
+    ></app-subtask-card>
     <div *ngIf="subtasks.length === 0">
       <button
         type="button"

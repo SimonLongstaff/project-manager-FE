@@ -7,10 +7,10 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
-          "strict": true
+          "strict": false
         }
       },
-      "root": "",
+      "root": "/project-manger",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -22,6 +22,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "deployUrl": "/project-manger/",
+            "baseHref": "/project-manger/",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
@@ -35,13 +37,9 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
                 }
               ],
               "fileReplacements": [

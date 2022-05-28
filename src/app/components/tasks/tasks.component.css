@@ -1,3 +1,7 @@
+h2{
+  font-weight: 550;
+}
+
 mat-card {
   margin-top: 10px;
   margin-left: 30px;
@@ -9,7 +13,7 @@ mat-progress-bar {
 }
 
 mat-card-title {
-  font-size: 20px;
+  font-size: 22.5px;
 }
 
 .flex-container {

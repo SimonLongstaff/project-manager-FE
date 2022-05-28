@@ -24,6 +24,11 @@
   margin-left: 15px;
 }
 
+.time
+{
+  padding: 0 10px;
+}
+
 .delete-Button{
   background-color: rgb(166, 16, 31);
   color: white;

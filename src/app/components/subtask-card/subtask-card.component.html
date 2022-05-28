@@ -1,0 +1,28 @@
+<mat-card class="subtaskCard">
+  <mat-card-title>
+    <div class="flex-container">
+      <span class="flex-left">{{Subtask.subtask_name}}</span>
+      <span class="flex-right">{{Subtask.percentage_complete}}%</span>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="">
+      <div class="complexity"><i>{{getComplexityString(Subtask.complexity)}}</i></div>
+      <div class="description">{{Subtask.subtask_desc}}</div>
+      <div class='button-container'>
+        <span class='button'><button type="button" class="work-Button" (click)="revealWorkModal(Subtask.id)" >
+          <span class="flex-centered"><mat-icon>work</mat-icon></span> <span class="buttonText"> Record Work</span>
+        </button>
+        </span>
+        <span class='button'>
+          <button type="button" class="delete-Button" (click)="handleDelete(Subtask)">
+          <span class="flex-centered"><mat-icon>delete</mat-icon> </span> <span class="buttonText"> Delete</span>
+        </button>
+      </span>
+</div>
+    </div>
+  </mat-card-content>
+
+  <app-work-done-modal *ngIf="WorkModalVisible && ModalId === Subtask.id" [subtask]="Subtask"
+                       (close)="revealWorkModal(undefined)" (taskUpdate)="updateTask($event)"></app-work-done-modal>
+</mat-card>

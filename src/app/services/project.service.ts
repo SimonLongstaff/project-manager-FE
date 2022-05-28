@@ -7,7 +7,11 @@ import { Project } from "../interfaces/Project";
 	providedIn: "root"
 })
 export class ProjectService {
-	private apiUrl: string = "http://localhost:3000/projects";
+	private apiUrl: string =
+		window.location.protocol +
+		"//" +
+		window.location.hostname +
+		":3000/projects";
 
 	constructor(private http: HttpClient) {}
 

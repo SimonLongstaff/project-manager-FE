@@ -7,7 +7,11 @@ import { subtask } from "../interfaces/subtask";
 	providedIn: "root"
 })
 export class SubtaskService {
-	private apiUrl: string = "http://localhost:3000/subtasks";
+	private apiUrl: string =
+		window.location.protocol +
+		"//" +
+		window.location.hostname +
+		":3000/subtasks";
 
 	constructor(private http: HttpClient) {}
 
