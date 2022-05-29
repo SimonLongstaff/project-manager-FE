@@ -1,5 +1,6 @@
 h2{
   font-weight: 550;
+  margin: 0;
 }
 
 mat-card {
@@ -76,4 +77,57 @@ mat-card-title {
 label {
   font-size: 15px;
   font-weight: bold;
+}
+
+.flex-container {
+  display: flex;
+  width: 100%;
+}
+
+.flex-right {
+  flex: 1;
+  width: 100%;
+  text-align: right;
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.flex-left {
+  flex: 1;
+  width: 100%;
+  align-self: flex-start;
+  justify-self: flex-start;
+}
+
+.button-container {
+  flex: 1;
+  justify-content: space-between;
+  align-items: flex-end;
+  display: flex;
+}
+
+.buttonText {
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+}
+
+.subtaskButton
+{
+  display: flex;
+  color: #2f8e41;
+  background-color: transparent;
+  color: white;
+  background-color: #2f8e41;
+  border-color: #2f8e41;
+  font-size: initial;
+}
+
+.subtaskButton:hover
+{
+  color: #2f8e41;
+  background-color: white;
+  border-color: white;
 }

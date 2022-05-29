@@ -1,0 +1,12 @@
+.tagEditor
+{
+  margin: 10px;
+  background: #d9d8d8;
+}
+
+.flex-item
+{
+  flex: 1;
+  padding: 5px;
+  margin: 5px;
+}

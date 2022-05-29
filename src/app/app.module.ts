@@ -28,6 +28,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { ArchivedProjectComponent } from "./components/archived-project/archived-project.component";
 import { SubtaskCardComponent } from "./components/subtask-card/subtask-card.component";
+import { TagEditorComponent } from "./components/tag-editor/tag-editor.component";
+import { TagEditModalComponent } from "./components/modals/tag-edit-modal/tag-edit-modal.component";
 
 @NgModule({
 	declarations: [
@@ -47,7 +49,9 @@ import { SubtaskCardComponent } from "./components/subtask-card/subtask-card.com
 		AddTagModalComponent,
 		TagDisplayComponent,
 		ArchivedProjectComponent,
-		SubtaskCardComponent
+		SubtaskCardComponent,
+		TagEditorComponent,
+		TagEditModalComponent
 	],
 	imports: [
 		HttpClientModule,

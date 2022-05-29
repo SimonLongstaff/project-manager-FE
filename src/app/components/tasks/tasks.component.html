@@ -10,8 +10,22 @@
   </mat-card-title>
   <div *ngIf="detailsRevealed">
     <mat-card-content>{{ task?.task_desc }}</mat-card-content>
+
     <br />
-    <h2>Subtasks</h2>
+
+    <div class="flex-container">
+      <h2 class="flex-left" style="flex: 5;">Subtasks</h2>
+      <div class="flex-right" #subtaskButton>
+        <button
+          type="button"
+          class="subtaskButton"
+          (click)="RevealModal(true)"
+        >
+          <span class="flex-centered"><mat-icon>add</mat-icon></span> <span class="buttonText"> New Subtask</span>
+        </button>
+      </div>
+    </div>
+
     <app-subtask-card
       *ngFor="let subtask of subtasks"
       [Subtask]="subtask"
@@ -24,15 +38,6 @@
         type="button"
         class="button"
       (click)="DeleteTask()">Delete</button>
-    </div>
-    <div #subtaskButton>
-      <button
-        type="button"
-        class="button full-width"
-        (click)="RevealModal(true)"
-      >
-        New Sub-Task
-      </button>
     </div>
     <app-new-subtask-modal
       *ngIf="addSubtask"

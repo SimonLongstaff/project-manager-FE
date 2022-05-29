@@ -10,14 +10,11 @@
         <mat-datepicker #picker></mat-datepicker>
       </span>
       <div class='row'>
-      <span class="input" >
-        <label class="full-width">Hours</label>
-        <input class="full-width" type="number" min="0" id="hours" value="0" #hours />
-      </span>
-      <span class="input">
-        <label class="full-width">Minutes</label>
-        <input class="full-width" min="0" max="59" type="number" value="0" id="minutes" #minutes />
-      </span>
+        <span class="input">
+          <mat-form-field #timeField>
+            <input #timeFieldInput matInput placeholder="Time" type="string" (input)="updateBox(timeFieldInput.value)">
+          </mat-form-field>
+        </span>
       </div>
       <div class='row'>
       <span class="input">

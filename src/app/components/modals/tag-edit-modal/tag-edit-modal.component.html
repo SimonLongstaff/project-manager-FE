@@ -1,0 +1,14 @@
+<div class="backdrop">
+
+  <mat-card class="alert-box">
+    <div class="flex-container" style="justify-content: right;">
+      <span class="flex-right">
+        <button class="close-button" (click)="handleClose()"><mat-icon>close</mat-icon></button>
+      </span>
+    </div>
+    <div *ngFor="let tag of Tags">
+      <app-tag-editor [tag]="tag" (delete)="handleDelete($event)"></app-tag-editor>
+    </div>
+  </mat-card>
+
+</div>

@@ -53,4 +53,8 @@ export class ProjectService {
 		let updateValue = { is_archived: isArchived };
 		return this.http.patch<Project>(patchUrl, updateValue);
 	}
+
+	GetByTag(tagId: number): Observable<Project[]> {
+		return this.http.get<Project[]>(this.apiUrl + "/tag_id=" + tagId);
+	}
 }

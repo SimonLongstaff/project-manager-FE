@@ -12,6 +12,12 @@
           New Tag
         </span>
       </button>
+      <button (click)="RevealEditTagModal()" class="button-tag">
+        <span class="flex-centered">
+          <mat-icon>edit</mat-icon>
+          Edit Tags
+        </span>
+      </button>
     </div>
     <mat-form-field class="aligned-end">
       <mat-label>Filter By Tag</mat-label>
@@ -28,6 +34,10 @@
   *ngIf="AddNewProject"
   [Projects]="projects"
 ></app-new-project-modal>
+<app-tag-edit-modal
+  (close)="RevealEditTagModal()"
+  *ngIf="EditTags"
+></app-tag-edit-modal>
 <h2>Active Projects</h2>
 <div *ngFor="let project of projects">
   <app-project (archived)="handleArchive($event)"

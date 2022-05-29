@@ -35,4 +35,20 @@ export class TagsService {
 	GetTag(id: number): Observable<Tag> {
 		return this.http.get<Tag>(this.apiUrl + "/" + id);
 	}
+
+	UpdateTag(tag: Tag): Observable<Tag> {
+		return this.http.put<Tag>(this.apiUrl + "/" + tag.id, tag);
+	}
+
+	DeleteTag(tagId: number): void {
+		this.http.delete(this.apiUrl + "/" + tagId).subscribe({
+			next: data => {
+				return true;
+			},
+			error: error => {
+				console.log(error);
+				return false;
+			}
+		});
+	}
 }

@@ -27,6 +27,7 @@ export class WorkDoneModalComponent implements OnInit {
 	@ViewChild("date") date!: ElementRef;
 	@ViewChild("hours") hours!: ElementRef;
 	@ViewChild("minutes") minutes!: ElementRef;
+	@ViewChild("timeFieldInput") timeField!: ElementRef;
 	@ViewChild("percentage")
 	percentage!: ElementRef;
 	@ViewChild("percentageDone") percentageDone!: ElementRef;
@@ -53,6 +54,37 @@ export class WorkDoneModalComponent implements OnInit {
 		}
 	}
 
+	ValidateTimeString(time: string): boolean {
+		return RegExp("([0-9]*[hH] )?([0-9]*[mM])|([0-9]*[hH])$").test(time);
+	}
+
+	convertTimeString(time: string): string {
+		console.log(time);
+		try {
+			let timeArray = time.split(" ");
+			let hours = timeArray[0].split("h")[0];
+			let minutes = timeArray[1].split("m")[0];
+			console.log(hours, minutes);
+			// @ts-ignore
+			return Number(hours * 60 + Number(minutes));
+		} catch (e) {
+			let minutes = time.split("m")[0];
+			console.log(minutes);
+			return minutes;
+		}
+	}
+
+	updateBox(input: string): void {
+		if (this.ValidateTimeString(input)) {
+			console.log(input, this.ValidateTimeString(input));
+			this.timeField.nativeElement.classList.remove("is-invalid");
+			this.timeField.nativeElement.classList.add("is-valid");
+		} else {
+			this.timeField.nativeElement.classList.remove("is-valid");
+			this.timeField.nativeElement.classList.add("is-invalid");
+		}
+	}
+
 	setPercentageDone(): number {
 		if (this.percentage.nativeElement.value) {
 			return (
@@ -65,9 +97,9 @@ export class WorkDoneModalComponent implements OnInit {
 	}
 
 	calculateTime(): number {
-		let hourToMin = Number(this.hours.nativeElement.value) * 60;
-		let min = Number(this.minutes.nativeElement.value);
-		return hourToMin + min;
+		let time = this.convertTimeString(this.timeField.nativeElement.value + " ");
+		console.log(time);
+		return Number(time);
 	}
 
 	getDate(): Date {
@@ -76,6 +108,14 @@ export class WorkDoneModalComponent implements OnInit {
 
 	updateWorkDone(): void {
 		if (!this.subtask.id) {
+			return;
+		}
+
+		if (!this.ValidateTimeString(this.timeField.nativeElement.value)) {
+			this.timeField.nativeElement.classList.add("is-invalid-flashing");
+			setTimeout(() => {
+				this.timeField.nativeElement.classList.remove("is-invalid-flashing");
+			}, 1000);
 			return;
 		}
 
