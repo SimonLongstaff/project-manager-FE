@@ -36,6 +36,8 @@ export class ProjectComponent implements OnInit {
 	@ViewChild("addButton") addButton: ElementRef | undefined;
 	@ViewChild("addForm") addForm: ElementRef | undefined;
 
+	editProject: boolean = false;
+
 	constructor(
 		private TaskService: TaskService,
 		private TagService: TagsService,
@@ -61,6 +63,13 @@ export class ProjectComponent implements OnInit {
 				this.tag = tag;
 			});
 		}
+	}
+
+	updateProject(project: Project): void {
+		this.ProjectService.getProject(this.project.id).subscribe(project => {
+			this.project = project;
+			this.editProject = false;
+		});
 	}
 
 	DeleteProject(): void {
@@ -126,5 +135,9 @@ export class ProjectComponent implements OnInit {
 	HideForm(): void {
 		this.addForm?.nativeElement.classList.add("hidden");
 		this.addButton?.nativeElement.classList.remove("hidden");
+	}
+
+	EditProject() {
+		this.editProject = true;
 	}
 }

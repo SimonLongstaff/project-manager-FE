@@ -20,6 +20,10 @@ export class ProjectService {
 		return this.http.get<Project[]>(this.apiUrl);
 	}
 
+	getProject(projectId: number): Observable<Project> {
+		return this.http.get<Project>(this.apiUrl + "/" + projectId);
+	}
+
 	addProject(
 		name: string,
 		desc: string,
@@ -56,5 +60,20 @@ export class ProjectService {
 
 	GetByTag(tagId: number): Observable<Project[]> {
 		return this.http.get<Project[]>(this.apiUrl + "/tag_id=" + tagId);
+	}
+
+	EditProject(
+		projectId: number,
+		name: string,
+		desc: string,
+		tagId: number
+	): Observable<Project> {
+		let patchUrl = this.apiUrl + "/" + projectId;
+		let updateValue = {
+			project_name: name,
+			project_desc: desc,
+			tag_id: tagId
+		};
+		return this.http.patch<Project>(patchUrl, updateValue);
 	}
 }

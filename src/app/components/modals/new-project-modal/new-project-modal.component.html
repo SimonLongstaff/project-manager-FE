@@ -1,31 +1,37 @@
 <div class="backdrop">
 
   <mat-card class="alert-box">
-    <mat-card-title>New Project</mat-card-title>
+    <mat-card-title>
+      <div class="flex-container">
+        <span class="flex-left"> {{getHeader()}} </span>
+      <span class="flex-right flex-small">
+        <button class="close-button" (click)="OnClose()"><mat-icon>close</mat-icon></button>
+      </span>
+        </div>
+    </mat-card-title>
     <hr/>
     <mat-card-content>
       <div class="entry-fields">
       <span class="name">
         <label class="full-width">Name</label>
-        <input class="full-width" type="text" id="name" #name/>
+        <input [value]="Project?.project_name" class="full-width" type="text" id="name" #name/>
       </span>
         <span class="tag-container">
         <label class="tag" for="tag">Tag:</label>
         <select #tag  class="tag" name="tag" id="tag">
           <option value="null">None</option>
-          <option *ngFor="let tag of Tags" value="{{tag.id}}">{{tag.tag_name}}</option>
+          <option *ngFor="let tag of Tags" [selected]="Project?.tag_id" value="{{tag.id}}">{{tag.tag_name}}</option>
         </select>
       </span>
       </div>
       <div>
       <span class="desc">
         <label class="full-width">Description</label>
-        <textarea class="full-width" id="desc" #desc></textarea>
+        <textarea [value]="Project?.project_desc" class="full-width" id="desc" #desc></textarea>
       </span>
       </div>
       <div class="alert-box-actions">
-        <button class="btn btn-primary" (click)="addProject()">Add</button>
-        <button class="btn btn-danger" (click)="OnClose()">Close</button>
+        <button class="btn btn-primary" (click)="addProject()"><mat-icon>save</mat-icon></button>
       </div>
     </mat-card-content
     >

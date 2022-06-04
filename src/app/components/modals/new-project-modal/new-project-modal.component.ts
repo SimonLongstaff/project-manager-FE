@@ -18,7 +18,7 @@ import { Tag } from "../../../interfaces/tag";
 	styleUrls: ["./new-project-modal.component.css"]
 })
 export class NewProjectModalComponent implements OnInit {
-	@Input() Projects: Project[] = [];
+	@Input() Project: Project | undefined;
 	Tags: Tag[] = [];
 
 	@ViewChild("name")
@@ -30,7 +30,7 @@ export class NewProjectModalComponent implements OnInit {
 	@ViewChild("tag")
 	tag!: ElementRef;
 
-	@Output() close = new EventEmitter<void>();
+	@Output() close = new EventEmitter<Project>();
 
 	constructor(
 		private ProjectService: ProjectService,
@@ -55,13 +55,34 @@ export class NewProjectModalComponent implements OnInit {
 			return;
 		}
 
+		if (this.Project) {
+			return this.EditProject();
+		}
+
 		this.ProjectService.addProject(
 			this.name.nativeElement.value,
 			this.desc.nativeElement.value,
 			this.tag.nativeElement.value
 		).subscribe(project => {
-			this.Projects.push(project);
-			this.close.emit();
+			this.close.emit(project);
 		});
+	}
+
+	EditProject(): void {
+		this.ProjectService.EditProject(
+			this.Project!.id,
+			this.name.nativeElement.value,
+			this.desc.nativeElement.value,
+			this.tag.nativeElement.value
+		).subscribe(project => {
+			this.close.emit(project);
+		});
+	}
+
+	getHeader() {
+		if (this.Project) {
+			return "Edit Project";
+		}
+		return "Add Project";
 	}
 }

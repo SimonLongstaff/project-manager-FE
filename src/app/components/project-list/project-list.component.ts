@@ -34,6 +34,12 @@ export class ProjectListComponent implements OnInit {
 		});
 	}
 
+	UpdateProjects(): void {
+		this.ProjectService.getProjects().subscribe(projects => {
+			this.projects = projects;
+		});
+	}
+
 	setTagFilter(): void {
 		//this.filterByTag = tagId;
 		console.log(this.selected);
@@ -56,6 +62,9 @@ export class ProjectListComponent implements OnInit {
 	}
 
 	ShowAddNewModal(state: boolean): void {
+		if (!state) {
+			this.UpdateProjects();
+		}
 		this.AddNewProject = state;
 	}
 
