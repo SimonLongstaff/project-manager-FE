@@ -4,4 +4,5 @@ export interface Work_Log {
 	date: Date;
 	time_spent: number;
 	percentage_done: number;
+	project_id?: number;
 }

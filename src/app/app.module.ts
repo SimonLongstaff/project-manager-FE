@@ -30,6 +30,8 @@ import { ArchivedProjectComponent } from "./components/archived-project/archived
 import { SubtaskCardComponent } from "./components/subtask-card/subtask-card.component";
 import { TagEditorComponent } from "./components/tag-editor/tag-editor.component";
 import { TagEditModalComponent } from "./components/modals/tag-edit-modal/tag-edit-modal.component";
+import { ActivityListComponent } from "./pages/acitivityLog/Components/activity-list/activity-list.component";
+import { ActivityLogComponent } from "./pages/acitivityLog/Components/activity-log/activity-log.component";
 
 @NgModule({
 	declarations: [
@@ -51,7 +53,9 @@ import { TagEditModalComponent } from "./components/modals/tag-edit-modal/tag-ed
 		ArchivedProjectComponent,
 		SubtaskCardComponent,
 		TagEditorComponent,
-		TagEditModalComponent
+		TagEditModalComponent,
+		ActivityListComponent,
+		ActivityLogComponent
 	],
 	imports: [
 		HttpClientModule,

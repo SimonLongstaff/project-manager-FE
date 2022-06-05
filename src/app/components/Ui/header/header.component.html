@@ -1,5 +1,22 @@
 <div class="navbar">
   <div class="container-fluid">
     <a href="#" class="navbar-brand">Project Tracker</a>
+    <ul class="nav navbar-nav">
+      <li><a  (click)="changePage('Home')">Home</a></li>
+      <li><a (click)="changePage('Project')">Projects</a></li>
+    </ul>
   </div>
 </div>
+
+<div class="outer-container" *ngIf="page === 'Home'">
+  <div class="inner-container">
+    <app-activity-list></app-activity-list>
+  </div>
+</div>
+
+<div class="outer-container" *ngIf="page === 'Project'">
+  <div class="inner-container">
+    <app-project-list></app-project-list>
+  </div>
+</div>
+

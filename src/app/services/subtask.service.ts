@@ -19,6 +19,10 @@ export class SubtaskService {
 		return this.http.get<subtask[]>(this.apiUrl);
 	}
 
+	getSubTask(id: number): Observable<subtask> {
+		return this.http.get<subtask>(this.apiUrl + "/" + id);
+	}
+
 	getAllSubTaskByTaskID(taskId: number) {
 		return this.http.get<subtask[]>(this.apiUrl + "/taskId=" + taskId);
 	}
