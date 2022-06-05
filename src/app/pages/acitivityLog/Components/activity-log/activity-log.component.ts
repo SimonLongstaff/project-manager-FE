@@ -44,6 +44,10 @@ export class ActivityLogComponent implements OnInit {
 		);
 	}
 
+	MinutesToHours(minutes: number): string {
+		return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
+	}
+
 	ReadableDateAndTime(date: Date): string {
 		return new Date(date).toLocaleString("en-US", {
 			day: "2-digit",

@@ -1,4 +1,7 @@
-<div *ngFor="let workLog of WorkLogs">
-  <app-activity-log  [workLog]="workLog"></app-activity-log>
+<div class="container">
+  <h1>Activity Log</h1>
+  <div *ngFor="let workLog of WorkLogs">
+    <app-activity-log  [workLog]="workLog"></app-activity-log>
+  </div>
 </div>
 

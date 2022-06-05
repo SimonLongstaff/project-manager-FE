@@ -5,5 +5,10 @@
       <span class="flex-right">{{ReadableDateAndTime(workLog.date)}}</span>
     </div>
   </mat-card-title>
-  <h3>{{subtask?.subtask_name}}</h3>
+  <div class="flex-container">
+    <span class="flex-left"><h3>Worked on {{subtask?.subtask_name}} for {{MinutesToHours(workLog.time_spent)}}.</h3></span>
+    <span class="flex-right"><h3>Completed {{workLog.percentage_done}}%</h3></span>
+  </div>
+
+
 </mat-card>
