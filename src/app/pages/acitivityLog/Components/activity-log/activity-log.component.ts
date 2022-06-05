@@ -44,6 +44,14 @@ export class ActivityLogComponent implements OnInit {
 		);
 	}
 
+	GetHeader() {
+		if (this.project) {
+			return this.task?.task_name + " - " + this.project.project_name;
+		} else {
+			return this.task?.task_name;
+		}
+	}
+
 	MinutesToHours(minutes: number): string {
 		return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
 	}
